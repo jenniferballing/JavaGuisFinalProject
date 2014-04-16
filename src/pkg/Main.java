@@ -19,6 +19,8 @@ public class Main extends JFrame implements ActionListener{
     private ImageIcon housePic;
     private static final int WIDTH = 500;
     private static final int HEIGHT = 500;
+    private int term, principle, downPayment;
+    private double rate;
 
 
     public Main(){
@@ -68,7 +70,7 @@ public class Main extends JFrame implements ActionListener{
 
         definitionsPanel = new JPanel();
         definitionsPanel.setBackground(Color.darkGray);
-        definitionsPanel.setPreferredSize(new Dimension(75, 500));
+        definitionsPanel.setPreferredSize(new Dimension(125, 350));
         definitionsPanel.add(definitionsLabel);
         definitionsPanel.add(principleLabel);
         definitionsPanel.add(rateLabel);
@@ -88,7 +90,7 @@ public class Main extends JFrame implements ActionListener{
 
         imagePanel = new JPanel();
         imagePanel.setBackground(Color.GRAY);//(Color.getHSBColor((float) 0.000,(float) 0.811, (float) 0.699));
-        imagePanel.setPreferredSize(new Dimension(400, 500));
+        imagePanel.setPreferredSize(new Dimension(400, 350));
         imagePanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
         //imagePanel.add(housePic);
 
@@ -104,9 +106,17 @@ public class Main extends JFrame implements ActionListener{
 
         futureHandler futureH = new futureHandler();
         currentHandler currentH = new currentHandler();
+        rateHandler rateH = new rateHandler();
+        termHandler termH = new termHandler();
+        principleHandler princeH = new principleHandler();
+        downPayHandler downPayH = new downPayHandler();
 
         futureMortButton.addActionListener(futureH);
         currentMortButton.addActionListener(currentH);
+        rateTF.addActionListener(rateH);
+        termTF.addActionListener(termH);
+        principleTF.addActionListener(princeH);
+        downPayTF.addActionListener(downPayH);
 
 
         add(containerPanel);
@@ -118,7 +128,7 @@ public class Main extends JFrame implements ActionListener{
     }
     public void afterFutureButton(){
 
-        imagePanel.setPreferredSize(new Dimension(WIDTH-200, HEIGHT));
+        imagePanel.setPreferredSize(new Dimension(WIDTH-150, HEIGHT-150));
         imagePanel.add(termDir);
         imagePanel.add(termTF);
         imagePanel.add(rateDir);
@@ -128,26 +138,67 @@ public class Main extends JFrame implements ActionListener{
         imagePanel.add(princDir);
         imagePanel.add(principleTF);
 
+        JPanel titlePanel = new JPanel();
+        titlePanel.setBackground(Color.BLUE);
+        titlePanel.setPreferredSize(new Dimension(500, 100));
         titleLabel.setLayout(new FlowLayout(FlowLayout.CENTER));
+        titlePanel.add(titleLabel);
 
 
         containerPanel.remove(currentMortButton);
         containerPanel.remove(futureMortButton);
+        containerPanel.remove(titleLabel);
         containerPanel.remove(imagePanel);
 
-        containerPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+        containerPanel.setLayout(new BorderLayout());
         imagePanel.setLayout(new GridLayout(5, 2));
-        imagePanel.add(definitionsPanel);
         definitionsPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
 
-        containerPanel.add(definitionsPanel);
-        containerPanel.add(imagePanel);
+        containerPanel.add(titlePanel, BorderLayout.NORTH);
+        containerPanel.add(definitionsPanel, BorderLayout.WEST);
+        containerPanel.add(imagePanel, BorderLayout.EAST);
 
 
         revalidate();
         repaint();
 
     }
+    public void afterCurrentButton(){
+
+        imagePanel.setPreferredSize(new Dimension(WIDTH-150, HEIGHT-150));
+        imagePanel.add(termDir);
+        imagePanel.add(termTF);
+        imagePanel.add(rateDir);
+        imagePanel.add(rateTF);
+        imagePanel.add(princDir);
+        imagePanel.add(principleTF);
+
+        JPanel titlePanel = new JPanel();
+        titlePanel.setBackground(Color.BLUE);
+        titlePanel.setPreferredSize(new Dimension(500, 100));
+        titleLabel.setLayout(new FlowLayout(FlowLayout.CENTER));
+        titlePanel.add(titleLabel);
+
+
+        containerPanel.remove(currentMortButton);
+        containerPanel.remove(futureMortButton);
+        containerPanel.remove(titleLabel);
+        containerPanel.remove(imagePanel);
+
+        containerPanel.setLayout(new BorderLayout());
+        imagePanel.setLayout(new GridLayout(5, 2));
+        definitionsPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
+
+        containerPanel.add(titlePanel, BorderLayout.NORTH);
+        containerPanel.add(definitionsPanel, BorderLayout.WEST);
+        containerPanel.add(imagePanel, BorderLayout.EAST);
+
+
+        revalidate();
+        repaint();
+
+    }
+
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -160,7 +211,72 @@ public class Main extends JFrame implements ActionListener{
     }
     public class currentHandler implements ActionListener{
         public void actionPerformed (ActionEvent e){
-            //current button stuff
+            afterCurrentButton();
         }
+    }
+    public class rateHandler implements ActionListener{
+        public void actionPerformed (ActionEvent e){
+            rate = Double.parseDouble(rateTF.getText());
+            rate= rate/100;
+
+        }
+    }
+    public class termHandler implements ActionListener{
+        public void actionPerformed (ActionEvent e){
+            term = Integer.parseInt(termTF.getText());
+
+        }
+    }
+    public class downPayHandler implements ActionListener{
+        public void actionPerformed (ActionEvent e){
+        downPayment = Integer.parseInt(downPayTF.getText());
+        }
+    }
+    public class principleHandler implements ActionListener{
+        public void actionPerformed (ActionEvent e){
+            principle = Integer.parseInt(principleTF.getText());
+
+        }
+    }
+    public double MonthlyPayment(){
+        int n = term*12;
+        double payment = ((rate*principle)/(1-Math.pow((1+rate),- n)+1));
+        return payment;
+    }
+    public double InterestPayment(double principal){
+        return  principal*rate;
+    }
+    public double PrincipalPayment (double principal){
+        double monthly = MonthlyPayment();
+        double interest = InterestPayment(principal);
+        return monthly - interest;
+    }
+
+    public void PrintSchedule(){
+
+        int [] paymentNum = new int[term*12];
+        for(int i=1; i<=term*12; i++){
+            paymentNum[i] = i;
+        }
+        double [] paymentAmount = new double[term*12];
+        for(int i=0; i<(term*12); i++){
+            paymentAmount[i] = MonthlyPayment();
+        }
+        double [] PrincipalPayed = new double[term*12];
+        double tempP = principle;
+        for(int i=0; i<term*12; i++){
+
+            PrincipalPayed[i]=PrincipalPayment(tempP);
+            tempP-=MonthlyPayment();
+        }
+        double [] InterestPayed = new double[term*12];
+        tempP = principle;
+        for(int i=0; i<term*12; i++){
+
+            InterestPayed[i] = InterestPayment(tempP);
+            tempP-=MonthlyPayment();
+        }
+        double [] RemainingBalance = new double[term*12];
+
     }
 }

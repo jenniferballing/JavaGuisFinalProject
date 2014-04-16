@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="299034b2-7112-4814-a59f-f9121e443233" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pkg/Calculations.java" afterPath="$PROJECT_DIR$/src/pkg/Calculations.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pkg/Main.java" afterPath="$PROJECT_DIR$/src/pkg/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="JavaGuisFinalProject.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -71,9 +70,12 @@
       <file leaf-file-name="Main.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/pkg/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="138" column="45" selection-start="5002" selection-end="5002" vertical-scroll-proportion="0.45454547" vertical-offset="2176" max-vertical-offset="2924">
+            <state line="272" column="8" selection-start="9383" selection-end="9383" vertical-scroll-proportion="0.38268158" vertical-offset="1784" max-vertical-offset="2193">
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="method#openingScreen#0;class#Main#0" expanded="false" />
+                <element signature="method#afterFutureButton#0;class#Main#0" expanded="false" />
+                <element signature="method#afterCurrentButton#0;class#Main#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -82,7 +84,7 @@
       <file leaf-file-name="Calculations.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pkg/Calculations.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="25" selection-start="89" selection-end="89" vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="221">
+            <state line="9" column="6" selection-start="132" selection-end="132" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="289">
               <folding />
             </state>
           </provider>
@@ -101,15 +103,15 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
+        <option value="$PROJECT_DIR$/src/pkg/Calculations.java" />
         <option value="$PROJECT_DIR$/src/pkg/Main.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1382" />
-    <option name="height" value="744" />
+    <option name="x" value="-1" />
+    <option name="width" value="630" />
+    <option name="height" value="728" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -373,7 +375,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <frame x="-1" y="0" width="630" height="728" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -392,8 +394,8 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.028700907" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3284553" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.066433564" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33722872" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -427,6 +429,9 @@
         <state line="83" column="67" selection-start="2975" selection-end="2975" vertical-scroll-proportion="0.0" vertical-offset="1156" max-vertical-offset="1887">
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#openingScreen#0;class#Main#0" expanded="false" />
+            <element signature="method#afterFutureButton#0;class#Main#0" expanded="false" />
+            <element signature="method#afterCurrentButton#0;class#Main#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -438,13 +443,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pkg/Calculations.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="25" selection-start="89" selection-end="89" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="221">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.7.0_45/src.zip!/java/awt/Color.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="57" column="30" selection-start="1633" selection-end="1633" vertical-scroll-proportion="0.27142859" vertical-offset="358" max-vertical-offset="20757">
@@ -452,11 +450,21 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/pkg/Calculations.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="6" selection-start="132" selection-end="132" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="289">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/pkg/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="138" column="45" selection-start="5002" selection-end="5002" vertical-scroll-proportion="0.45454547" vertical-offset="2176" max-vertical-offset="2924">
+        <state line="272" column="8" selection-start="9383" selection-end="9383" vertical-scroll-proportion="0.38268158" vertical-offset="1784" max-vertical-offset="2193">
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#openingScreen#0;class#Main#0" expanded="false" />
+            <element signature="method#afterFutureButton#0;class#Main#0" expanded="false" />
+            <element signature="method#afterCurrentButton#0;class#Main#0" expanded="false" />
           </folding>
         </state>
       </provider>
