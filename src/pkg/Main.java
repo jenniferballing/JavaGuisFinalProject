@@ -7,28 +7,39 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.geom.Arc2D;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 
 /**
  * Created by JenniferBalling on 4/11/14.
  */
 public class Main extends JFrame implements ActionListener{
-    private JPanel containerPanel, imagePanel, definitionsPanel;
-    private JButton currentMortButton, futureMortButton, enterButton, earlyPayoffButton, backToStartButton;
+    private JPanel containerPanel, imagePanel, definitionsPanel, titlePanel, gridPanel;
+    private JButton currentMortButton, futureMortButton, calcButton3, calcTotals, earlyPayoffButton, backToStartButton;
     private JLabel titleLabel, definitionsLabel, principleLabel, rateLabel, termLabel, downPayLabel, payoffLabel, toStartLabel, princDir, rateDir, termDir, downPayDir;
-    private JTextField principleTF, rateTF, termTF, downPayTF;
     private ImageIcon housePic;
     private static final int WIDTH = 500;
     private static final int HEIGHT = 500;
-    private int term, principle, downPayment;
-    private double rate;
+    int [] paymentNum;
+    double [] paymentAmount;
+    double [] principalPayed;
+    double [] interestPayed;
+    double [] remainingBalance;
+    final JTextField principleTF = new JTextField();
+    final JTextField rateTF = new JTextField();
+    final JTextField downPayTF = new JTextField();
+    final JTextField termTF = new JTextField();
+
 
 
     public Main(){
 
         openingScreen();
 
+
         setVisible(true);
-        setSize(WIDTH+10, HEIGHT+150);
+        setSize(WIDTH+100, HEIGHT+150);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
     }
@@ -36,7 +47,7 @@ public class Main extends JFrame implements ActionListener{
         new Main();
 
     }
-    public void openingScreen(){
+   public void openingScreen(){
 
         //Initialize Variables
 
@@ -44,20 +55,20 @@ public class Main extends JFrame implements ActionListener{
         titleLabel.setFont(titleLabel.getFont().deriveFont(25f));
         titleLabel.setForeground(Color.white);//(Color.getHSBColor((float) .0867,(float) .137, (float) 1.0));
 
-        principleTF = new JTextField();
+
         principleTF.setEditable(true);
-        rateTF = new JTextField();
+
         rateTF.setEditable(true);
-        downPayTF = new JTextField();
+
         downPayTF.setEditable(true);
-        termTF = new JTextField();
         termTF.setEditable(true);//DO SOME ERROR CHECKING!
 
         currentMortButton = new JButton("Current Mortgage");
         futureMortButton = new JButton("Future Mortgage");
-        enterButton = new JButton("Enter");
+        calcButton3 = new JButton("Calculate 3 Years of Payments");
         earlyPayoffButton = new JButton("Early Payoff");
         backToStartButton = new JButton("Back to Start");
+        calcTotals = new JButton("Calculate Loan Totals");
 
         payoffLabel = new JLabel();
         toStartLabel = new JLabel();
@@ -78,10 +89,10 @@ public class Main extends JFrame implements ActionListener{
 
         definitionsPanel.add(termLabel);
 
-        princDir = new JLabel("Directions here: ");
-        termDir = new JLabel("Directions here: ");
-        rateDir = new JLabel("Directions here: ");
-        downPayDir = new JLabel("Directions here: ");
+        princDir = new JLabel("Principal: ");
+        termDir = new JLabel("Term: ");
+        rateDir = new JLabel("Rate: ");
+        downPayDir = new JLabel("Down Payment: ");
 
         housePic = new ImageIcon();
         //housePic picture
@@ -106,29 +117,42 @@ public class Main extends JFrame implements ActionListener{
 
         futureHandler futureH = new futureHandler();
         currentHandler currentH = new currentHandler();
-        rateHandler rateH = new rateHandler();
-        termHandler termH = new termHandler();
-        principleHandler princeH = new principleHandler();
-        downPayHandler downPayH = new downPayHandler();
 
         futureMortButton.addActionListener(futureH);
         currentMortButton.addActionListener(currentH);
-        rateTF.addActionListener(rateH);
-        termTF.addActionListener(termH);
-        principleTF.addActionListener(princeH);
-        downPayTF.addActionListener(downPayH);
+
+        calcButton3.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                int t = Integer.parseInt(termTF.getText());
+                double r = Double.parseDouble(rateTF.getText());
+                double p = Double.parseDouble(principleTF.getText());
+                double d = Double.parseDouble(downPayTF.getText());
+
+                t = t*12;
+                r = (r/100)/12;
+                p = p-d;
+
+                double partial = Math.pow((1+r), t);
+                double monthlyPayment = (r*p*partial)/(partial-1);
+
+                PrintFirstThreeYearSchedule(monthlyPayment, r, t, p);
+
+            }
+        });
 
 
         add(containerPanel);
 
-        //update(this.getGraphics());
+        update(this.getGraphics());
 
         revalidate();
         repaint();
-    }
+   }
     public void afterFutureButton(){
 
-        imagePanel.setPreferredSize(new Dimension(WIDTH-150, HEIGHT-150));
+        imagePanel.setPreferredSize(new Dimension(WIDTH-200, HEIGHT-300));
         imagePanel.add(termDir);
         imagePanel.add(termTF);
         imagePanel.add(rateDir);
@@ -140,7 +164,7 @@ public class Main extends JFrame implements ActionListener{
 
         JPanel titlePanel = new JPanel();
         titlePanel.setBackground(Color.BLUE);
-        titlePanel.setPreferredSize(new Dimension(500, 100));
+        titlePanel.setPreferredSize(new Dimension(500, 75));
         titleLabel.setLayout(new FlowLayout(FlowLayout.CENTER));
         titlePanel.add(titleLabel);
 
@@ -152,11 +176,13 @@ public class Main extends JFrame implements ActionListener{
 
         containerPanel.setLayout(new BorderLayout());
         imagePanel.setLayout(new GridLayout(5, 2));
+        definitionsPanel.setPreferredSize(new Dimension(100, 200));
         definitionsPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
 
         containerPanel.add(titlePanel, BorderLayout.NORTH);
         containerPanel.add(definitionsPanel, BorderLayout.WEST);
         containerPanel.add(imagePanel, BorderLayout.EAST);
+        containerPanel.add(calcButton3);
 
 
         revalidate();
@@ -173,7 +199,7 @@ public class Main extends JFrame implements ActionListener{
         imagePanel.add(princDir);
         imagePanel.add(principleTF);
 
-        JPanel titlePanel = new JPanel();
+        titlePanel = new JPanel();
         titlePanel.setBackground(Color.BLUE);
         titlePanel.setPreferredSize(new Dimension(500, 100));
         titleLabel.setLayout(new FlowLayout(FlowLayout.CENTER));
@@ -198,8 +224,6 @@ public class Main extends JFrame implements ActionListener{
         repaint();
 
     }
-
-
     @Override
     public void actionPerformed(ActionEvent e) {
 
@@ -214,69 +238,104 @@ public class Main extends JFrame implements ActionListener{
             afterCurrentButton();
         }
     }
-    public class rateHandler implements ActionListener{
-        public void actionPerformed (ActionEvent e){
-            rate = Double.parseDouble(rateTF.getText());
-            rate= rate/100;
+    public void PrintFirstThreeYearSchedule(double Monthly, double rate, int t, double p){
+
+        containerPanel.remove(imagePanel);
+        containerPanel.remove(calcButton3);
+        containerPanel.remove(definitionsPanel);
+        int termNum = 36;
+
+        //CREATE ARRAYS OF INFO
+
+        paymentNum = new int[termNum];//[term*12];
+        for(int i=0; i<termNum; i++){
+            paymentNum[i] = i+1;
+        }
+
+        paymentAmount = new double[termNum];//[term*12];
+        for(int i=0; i<termNum; i++){
+            String m = String.format("%.2f", Monthly);
+            double monthly = Double.parseDouble(m);
+            paymentAmount[i] = monthly;
+        }
+
+        principalPayed = new double[termNum];//[term*12];
+        double tempP = p;
+        for(int i=0; i<termNum; i++){
+            double payed =  tempP*rate;
+            double prince = Monthly-payed;
+            String m = String.format("%2.2f", prince);
+            double num = Double.parseDouble(m);
+            principalPayed[i] = num;
+            tempP-=Monthly;
+        }
+        interestPayed = new double[termNum];//[term*12];
+        tempP = p;
+        for(int i=0; i<termNum; i++){
+            double payed =  tempP*rate;
+            String m = String.format("%2.2f", payed);
+            double num = Double.parseDouble(m);
+            interestPayed[i] = num;
+            tempP-=Monthly;
+        }
+        remainingBalance = new double[termNum];//[term*12];
+        tempP = p;
+        for(int i=0; i<termNum; i++){
+            String m = String.format("%2.2f", tempP);
+            double num = Double.parseDouble(m);
+            remainingBalance[i] = num;
+            tempP-= Monthly;
+        }
+
+        //CREATE NEW GRIDDED PANEL
+
+        JLabel numL = new JLabel("Payment Number: ");
+        JLabel payL = new JLabel("Payment Amount: ");
+        JLabel prinL = new JLabel("Principal Amount: ");
+        JLabel intL = new JLabel("Interest Amount: ");
+        JLabel remainL = new JLabel("Remaining Balance: ");
+
+        gridPanel = new JPanel();
+        containerPanel.setPreferredSize(new Dimension(800, 800));
+        gridPanel.setPreferredSize(new Dimension(WIDTH+200, HEIGHT));
+        gridPanel.setLayout(new GridLayout(termNum+1, 5));
+
+        gridPanel.add(numL);
+        gridPanel.add(payL);
+        gridPanel.add(prinL);
+        gridPanel.add(intL);
+        gridPanel.add(remainL);
+
+        for(int j=0; j<termNum; j++){
+            //Num
+            JLabel label = new JLabel();
+            label.setText(Integer.toString(paymentNum[j]));
+            gridPanel.add(label);
+
+            //Payment amount
+            JLabel pLabel = new JLabel();
+            pLabel.setText(Double.toString(paymentAmount[j]));
+            gridPanel.add(pLabel);
+
+            //Principal amount
+            JLabel prLabel = new JLabel();
+            prLabel.setText(Double.toString(principalPayed[j]));
+            gridPanel.add(prLabel);
+
+            //Interest amount
+            JLabel iLabel = new JLabel();
+            iLabel.setText(Double.toString(interestPayed[j]));
+            gridPanel.add(iLabel);
+
+            //Remaining amount
+            JLabel rLabel = new JLabel();
+            rLabel.setText(Double.toString(remainingBalance[j]));
+            gridPanel.add(rLabel);
 
         }
-    }
-    public class termHandler implements ActionListener{
-        public void actionPerformed (ActionEvent e){
-            term = Integer.parseInt(termTF.getText());
-
-        }
-    }
-    public class downPayHandler implements ActionListener{
-        public void actionPerformed (ActionEvent e){
-        downPayment = Integer.parseInt(downPayTF.getText());
-        }
-    }
-    public class principleHandler implements ActionListener{
-        public void actionPerformed (ActionEvent e){
-            principle = Integer.parseInt(principleTF.getText());
-
-        }
-    }
-    public double MonthlyPayment(){
-        int n = term*12;
-        double payment = ((rate*principle)/(1-Math.pow((1+rate),- n)+1));
-        return payment;
-    }
-    public double InterestPayment(double principal){
-        return  principal*rate;
-    }
-    public double PrincipalPayment (double principal){
-        double monthly = MonthlyPayment();
-        double interest = InterestPayment(principal);
-        return monthly - interest;
-    }
-
-    public void PrintSchedule(){
-
-        int [] paymentNum = new int[term*12];
-        for(int i=1; i<=term*12; i++){
-            paymentNum[i] = i;
-        }
-        double [] paymentAmount = new double[term*12];
-        for(int i=0; i<(term*12); i++){
-            paymentAmount[i] = MonthlyPayment();
-        }
-        double [] PrincipalPayed = new double[term*12];
-        double tempP = principle;
-        for(int i=0; i<term*12; i++){
-
-            PrincipalPayed[i]=PrincipalPayment(tempP);
-            tempP-=MonthlyPayment();
-        }
-        double [] InterestPayed = new double[term*12];
-        tempP = principle;
-        for(int i=0; i<term*12; i++){
-
-            InterestPayed[i] = InterestPayment(tempP);
-            tempP-=MonthlyPayment();
-        }
-        double [] RemainingBalance = new double[term*12];
-
+        titleLabel.setText("First Three Years of Payments: ");
+        containerPanel.add(gridPanel);
+        revalidate();
+        repaint();
     }
 }
