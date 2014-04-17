@@ -69,12 +69,17 @@
       <file leaf-file-name="Main.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/pkg/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="140" column="39" selection-start="5151" selection-end="5151" vertical-scroll-proportion="0.8526012" vertical-offset="1898" max-vertical-offset="4726">
+            <state line="285" column="23" selection-start="10702" selection-end="10702" vertical-scroll-proportion="0.33704737" vertical-offset="2480" max-vertical-offset="3859">
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2593#2611#0" expanded="false" />
-                <element signature="e#4973#5248#0" expanded="true" />
-                <element signature="e#5238#5239#0" expanded="true" />
+                <element signature="e#2605#2623#0" expanded="false" />
+                <element signature="e#4817#4968#0" expanded="true" />
+                <element signature="e#4958#4959#0" expanded="true" />
+                <element signature="e#5014#5289#0" expanded="true" />
+                <element signature="e#5279#5280#0" expanded="true" />
+                <element signature="method#OpeningScreen#0;class#Main#0" expanded="false" />
+                <element signature="method#afterFutureButton#0;class#Main#0" expanded="false" />
+                <element signature="method#afterCurrentButton#0;class#Main#0" expanded="false" />
                 <element signature="method#actionPerformed#0;class#Main#0" expanded="false" />
                 <element signature="class#currentHandler#0;class#Main#0" expanded="false" />
                 <element signature="method#PrintTotals#0;class#Main#0" expanded="false" />
@@ -430,9 +435,14 @@
         <state line="46" column="30" selection-start="1436" selection-end="1436" vertical-scroll-proportion="0.0" vertical-offset="782" max-vertical-offset="1054">
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2593#2611#0" expanded="false" />
-            <element signature="e#4973#5248#0" expanded="true" />
-            <element signature="e#5238#5239#0" expanded="true" />
+            <element signature="e#2605#2623#0" expanded="false" />
+            <element signature="e#4817#4968#0" expanded="true" />
+            <element signature="e#4958#4959#0" expanded="true" />
+            <element signature="e#5014#5289#0" expanded="true" />
+            <element signature="e#5279#5280#0" expanded="true" />
+            <element signature="method#OpeningScreen#0;class#Main#0" expanded="false" />
+            <element signature="method#afterFutureButton#0;class#Main#0" expanded="false" />
+            <element signature="method#afterCurrentButton#0;class#Main#0" expanded="false" />
             <element signature="method#actionPerformed#0;class#Main#0" expanded="false" />
             <element signature="class#currentHandler#0;class#Main#0" expanded="false" />
             <element signature="method#PrintTotals#0;class#Main#0" expanded="false" />
@@ -446,9 +456,14 @@
         <state line="83" column="67" selection-start="2975" selection-end="2975" vertical-scroll-proportion="0.0" vertical-offset="1156" max-vertical-offset="1887">
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2593#2611#0" expanded="false" />
-            <element signature="e#4973#5248#0" expanded="true" />
-            <element signature="e#5238#5239#0" expanded="true" />
+            <element signature="e#2605#2623#0" expanded="false" />
+            <element signature="e#4817#4968#0" expanded="true" />
+            <element signature="e#4958#4959#0" expanded="true" />
+            <element signature="e#5014#5289#0" expanded="true" />
+            <element signature="e#5279#5280#0" expanded="true" />
+            <element signature="method#OpeningScreen#0;class#Main#0" expanded="false" />
+            <element signature="method#afterFutureButton#0;class#Main#0" expanded="false" />
+            <element signature="method#afterCurrentButton#0;class#Main#0" expanded="false" />
             <element signature="method#actionPerformed#0;class#Main#0" expanded="false" />
             <element signature="class#currentHandler#0;class#Main#0" expanded="false" />
             <element signature="method#PrintTotals#0;class#Main#0" expanded="false" />
@@ -478,12 +493,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pkg/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="140" column="39" selection-start="5151" selection-end="5151" vertical-scroll-proportion="0.8526012" vertical-offset="1898" max-vertical-offset="4726">
+        <state line="285" column="23" selection-start="10702" selection-end="10702" vertical-scroll-proportion="0.33704737" vertical-offset="2480" max-vertical-offset="3859">
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2593#2611#0" expanded="false" />
-            <element signature="e#4973#5248#0" expanded="true" />
-            <element signature="e#5238#5239#0" expanded="true" />
+            <element signature="e#2605#2623#0" expanded="false" />
+            <element signature="e#4817#4968#0" expanded="true" />
+            <element signature="e#4958#4959#0" expanded="true" />
+            <element signature="e#5014#5289#0" expanded="true" />
+            <element signature="e#5279#5280#0" expanded="true" />
+            <element signature="method#OpeningScreen#0;class#Main#0" expanded="false" />
+            <element signature="method#afterFutureButton#0;class#Main#0" expanded="false" />
+            <element signature="method#afterCurrentButton#0;class#Main#0" expanded="false" />
             <element signature="method#actionPerformed#0;class#Main#0" expanded="false" />
             <element signature="class#currentHandler#0;class#Main#0" expanded="false" />
             <element signature="method#PrintTotals#0;class#Main#0" expanded="false" />

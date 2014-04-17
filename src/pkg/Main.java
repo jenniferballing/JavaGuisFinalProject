@@ -13,7 +13,7 @@ import java.awt.event.ActionListener;
  */
 public class Main extends JFrame implements ActionListener{
     private JPanel buttonPanel, containerPanel, imagePanel, definitionsPanel, titlePanel, gridPanel, scrollPanel;
-    private JButton currentMortButton, futureMortButton, calcButton3, calcTotals2, calcTotals, earlyPayoffButton, backToStartButton;
+    private JButton currentMortButton, futureMortButton, calcButton3, calcTotals2, calcTotals, earlyPayoffButton, backToStartButton, calcButton;
     private JLabel titleLabel, definitionsLabel, principleLabel, rateLabel, termLabel, downPayLabel, princDir, rateDir, termDir, downPayDir;
     private ImageIcon housePic;
     private static final int WIDTH = 600, HEIGHT = 600;
@@ -131,7 +131,7 @@ public class Main extends JFrame implements ActionListener{
        earlyPayoffButton.addActionListener(new ActionListener() {
            @Override
            public void actionPerformed(ActionEvent e) {
-
+               EarlyPayoff();
            }
        });
        backToStartButton.addActionListener(new ActionListener() {
@@ -270,6 +270,76 @@ public class Main extends JFrame implements ActionListener{
         repaint();
 
     }
+    public void EarlyPayoff(){
+        containerPanel.removeAll();
+
+        titleLabel.setText("Early Payoff Options");
+        titlePanel.removeAll();
+        titlePanel.add(titleLabel);
+
+        JLabel currentTotals = new JLabel("Current Totals");
+        double p = Double.parseDouble(principleTF.getText());
+        double r = Double.parseDouble(rateTF.getText());
+        double d = Double.parseDouble(downPayTF.getText());
+        double t = Integer.parseInt(termTF.getText());
+
+        r = (r/100)/12;
+        t*=12;
+        p-=d;
+        double partial = Math.pow((1+r), t);
+        double Monthly = (r*p*partial)/(partial-1);
+
+        String m = String.format("%.2f", (double)t);
+        JLabel numL = new JLabel("Total Number of Payments: ");
+        JLabel num = new JLabel(m);
+
+        double dollarsPaid = Monthly*t;
+        String dollar = String.format("%.2f", dollarsPaid);
+        JLabel payL = new JLabel("Total Dollars Paid: ");
+        JLabel doll = new JLabel(dollar);
+
+        double storeInterest = dollarsPaid - p;
+        JLabel intL = new JLabel("Total Interest Paid: ");
+        String i = String.format("%.2f", storeInterest);
+        JLabel inT = new JLabel(i);
+
+        JLabel mon = new JLabel("Monthly Addition to Payment: ");
+        JLabel lump = new JLabel("Annual Lump Sum: ");
+
+        JTextField monTF = new JTextField();
+        monTF.setEditable(true);
+        JTextField lumpTF = new JTextField();
+        lumpTF.setEditable(true);
+
+        calcButton = new JButton("Calculate New Totals");
+        buttonPanel.removeAll();
+        buttonPanel.add(calcButton);
+
+        JLabel space = new JLabel("");
+
+        imagePanel.removeAll();
+        imagePanel.setLayout(new GridLayout(7, 2));
+        imagePanel.add(currentTotals);
+        imagePanel.add(space);
+        imagePanel.add(numL);
+        imagePanel.add(num);
+        imagePanel.add(payL);
+        imagePanel.add(doll);
+        imagePanel.add(intL);
+        imagePanel.add(inT);
+        imagePanel.add(mon);
+        imagePanel.add(monTF);
+        imagePanel.add(lump);
+        imagePanel.add(lumpTF);
+
+        containerPanel.add(titlePanel, BorderLayout.NORTH);
+        containerPanel.add(imagePanel, BorderLayout.CENTER);
+        containerPanel.add(buttonPanel, BorderLayout.SOUTH);
+
+        add(containerPanel);
+        revalidate();
+        repaint();
+    }
     @Override
     public void actionPerformed(ActionEvent e) {
 
@@ -287,6 +357,7 @@ public class Main extends JFrame implements ActionListener{
     public void PrintTotals(double Monthly, double rate, int t, double p){
         containerPanel.remove(imagePanel);
         containerPanel.remove(calcButton3);
+        buttonPanel.removeAll();
         containerPanel.remove(definitionsPanel);
 
         String m = String.format("%.2f", (double)t);
