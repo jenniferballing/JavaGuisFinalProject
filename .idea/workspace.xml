@@ -69,14 +69,16 @@
       <file leaf-file-name="Main.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/pkg/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="285" column="23" selection-start="10702" selection-end="10702" vertical-scroll-proportion="0.33704737" vertical-offset="2480" max-vertical-offset="3859">
+            <state line="211" column="41" selection-start="8165" selection-end="8165" vertical-scroll-proportion="0.66573817" vertical-offset="3161" max-vertical-offset="4964">
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2605#2623#0" expanded="false" />
-                <element signature="e#4817#4968#0" expanded="true" />
-                <element signature="e#4958#4959#0" expanded="true" />
-                <element signature="e#5014#5289#0" expanded="true" />
-                <element signature="e#5279#5280#0" expanded="true" />
+                <element signature="e#2693#2711#0" expanded="false" />
+                <element signature="e#4905#5056#0" expanded="true" />
+                <element signature="e#5046#5047#0" expanded="true" />
+                <element signature="e#5102#5377#0" expanded="true" />
+                <element signature="e#5367#5368#0" expanded="true" />
+                <element signature="e#5416#8332#0" expanded="true" />
+                <element signature="e#8322#8323#0" expanded="true" />
                 <element signature="method#OpeningScreen#0;class#Main#0" expanded="false" />
                 <element signature="method#afterFutureButton#0;class#Main#0" expanded="false" />
                 <element signature="method#afterCurrentButton#0;class#Main#0" expanded="false" />
@@ -394,7 +396,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32554257" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32520324" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -435,11 +437,13 @@
         <state line="46" column="30" selection-start="1436" selection-end="1436" vertical-scroll-proportion="0.0" vertical-offset="782" max-vertical-offset="1054">
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2605#2623#0" expanded="false" />
-            <element signature="e#4817#4968#0" expanded="true" />
-            <element signature="e#4958#4959#0" expanded="true" />
-            <element signature="e#5014#5289#0" expanded="true" />
-            <element signature="e#5279#5280#0" expanded="true" />
+            <element signature="e#2693#2711#0" expanded="false" />
+            <element signature="e#4905#5056#0" expanded="true" />
+            <element signature="e#5046#5047#0" expanded="true" />
+            <element signature="e#5102#5377#0" expanded="true" />
+            <element signature="e#5367#5368#0" expanded="true" />
+            <element signature="e#5416#8332#0" expanded="true" />
+            <element signature="e#8322#8323#0" expanded="true" />
             <element signature="method#OpeningScreen#0;class#Main#0" expanded="false" />
             <element signature="method#afterFutureButton#0;class#Main#0" expanded="false" />
             <element signature="method#afterCurrentButton#0;class#Main#0" expanded="false" />
@@ -456,11 +460,13 @@
         <state line="83" column="67" selection-start="2975" selection-end="2975" vertical-scroll-proportion="0.0" vertical-offset="1156" max-vertical-offset="1887">
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2605#2623#0" expanded="false" />
-            <element signature="e#4817#4968#0" expanded="true" />
-            <element signature="e#4958#4959#0" expanded="true" />
-            <element signature="e#5014#5289#0" expanded="true" />
-            <element signature="e#5279#5280#0" expanded="true" />
+            <element signature="e#2693#2711#0" expanded="false" />
+            <element signature="e#4905#5056#0" expanded="true" />
+            <element signature="e#5046#5047#0" expanded="true" />
+            <element signature="e#5102#5377#0" expanded="true" />
+            <element signature="e#5367#5368#0" expanded="true" />
+            <element signature="e#5416#8332#0" expanded="true" />
+            <element signature="e#8322#8323#0" expanded="true" />
             <element signature="method#OpeningScreen#0;class#Main#0" expanded="false" />
             <element signature="method#afterFutureButton#0;class#Main#0" expanded="false" />
             <element signature="method#afterCurrentButton#0;class#Main#0" expanded="false" />
@@ -493,14 +499,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pkg/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="285" column="23" selection-start="10702" selection-end="10702" vertical-scroll-proportion="0.33704737" vertical-offset="2480" max-vertical-offset="3859">
+        <state line="211" column="41" selection-start="8165" selection-end="8165" vertical-scroll-proportion="0.66573817" vertical-offset="3161" max-vertical-offset="4964">
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2605#2623#0" expanded="false" />
-            <element signature="e#4817#4968#0" expanded="true" />
-            <element signature="e#4958#4959#0" expanded="true" />
-            <element signature="e#5014#5289#0" expanded="true" />
-            <element signature="e#5279#5280#0" expanded="true" />
+            <element signature="e#2693#2711#0" expanded="false" />
+            <element signature="e#4905#5056#0" expanded="true" />
+            <element signature="e#5046#5047#0" expanded="true" />
+            <element signature="e#5102#5377#0" expanded="true" />
+            <element signature="e#5367#5368#0" expanded="true" />
+            <element signature="e#5416#8332#0" expanded="true" />
+            <element signature="e#8322#8323#0" expanded="true" />
             <element signature="method#OpeningScreen#0;class#Main#0" expanded="false" />
             <element signature="method#afterFutureButton#0;class#Main#0" expanded="false" />
             <element signature="method#afterCurrentButton#0;class#Main#0" expanded="false" />

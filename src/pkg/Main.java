@@ -19,6 +19,7 @@ public class Main extends JFrame implements ActionListener{
     private static final int WIDTH = 600, HEIGHT = 600;
     int [] paymentNum;
     double [] paymentAmount, principalPayed, interestPayed, remainingBalance ;
+    private JTextField monTF;
     final JTextField principleTF = new JTextField();
     final JTextField rateTF = new JTextField();
     final JTextField downPayTF = new JTextField();
@@ -44,6 +45,7 @@ public class Main extends JFrame implements ActionListener{
         backToStartButton = new JButton("Back to Start");
         calcTotals = new JButton("Calculate Loan Totals");
         calcTotals2 = new JButton("Calculate Loan Totals");
+        calcButton = new JButton("Calculate New Totals");
         futureHandler futureH = new futureHandler();
         currentHandler currentH = new currentHandler();
 
@@ -141,6 +143,78 @@ public class Main extends JFrame implements ActionListener{
                buttonPanel.removeAll();
                containerPanel.removeAll();
                OpeningScreen();
+           }
+       });
+       calcButton.addActionListener(new ActionListener() {
+           @Override
+           public void actionPerformed(ActionEvent e) {
+               double userMonthlyIncrease;
+               if(monTF.getText() != null){
+                   userMonthlyIncrease = Double.parseDouble(monTF.getText());
+               }else{
+                   userMonthlyIncrease = 0;
+               }
+
+               double p = Double.parseDouble(principleTF.getText());
+               double r = Double.parseDouble(rateTF.getText());
+               double d = Double.parseDouble(downPayTF.getText());
+               double t = Integer.parseInt(termTF.getText());
+
+               r = (r/100)/12;
+               t*=12;
+               p-=d;
+               double partial = Math.pow((1+r), t);
+               double Monthly = (r*p*partial)/(partial-1);
+
+
+               String m = String.format("%.2f", (double)t);
+               JLabel numL = new JLabel("Total Number of Payments: ");
+               JLabel num = new JLabel(m);
+
+               double dollarsPaid = Monthly*t;
+               String dollar = String.format("%.2f", dollarsPaid);
+               JLabel payL = new JLabel("Total Dollars Paid: ");
+               JLabel doll = new JLabel(dollar);
+
+               double storeInterest = dollarsPaid - p;
+               JLabel intL = new JLabel("Total Interest Paid: ");
+               String i = String.format("%.2f", storeInterest);
+               JLabel inT = new JLabel(i);
+
+               double newMonthly = Monthly+userMonthlyIncrease;
+               double tempP = p;
+               double interest, prince,totalI=0;
+               int paymentCount=0;
+               while(tempP>0){
+                   interest = tempP*r;
+                   totalI+=interest;
+                   prince = Monthly-interest;
+                   prince += userMonthlyIncrease;
+                   paymentCount+=1;
+                   tempP-=prince;
+               }
+
+               double totalPaid = p+totalI;
+
+               String tp = String.format("%2.2f", totalPaid );
+               String inter = String.format("%2.2f", totalI);
+               String newMonth = String.format("%2.2f", newMonthly);
+               String paymentNum = String.format("%2.2f", (double)paymentCount);
+
+               JLabel newTotals = new JLabel("New Totals:");
+               JLabel newPayment = new JLabel("New Monthly Payment: " + newMonth);
+               JLabel newTotalDoll = new JLabel("New Total Dollars Paid: "+tp);
+               JLabel newInterest = new JLabel("New Total Interest Paid: " + inter);
+               JLabel newPayNum = new JLabel("New Total Payments Made: " + paymentNum);
+
+               imagePanel.add(newTotals);
+               imagePanel.add(newPayment);
+               imagePanel.add(newPayNum);
+               imagePanel.add(newInterest);
+               imagePanel.add(newTotalDoll);
+
+               revalidate();
+               repaint();
            }
        });
 
@@ -270,6 +344,7 @@ public class Main extends JFrame implements ActionListener{
         repaint();
 
     }
+
     public void EarlyPayoff(){
         containerPanel.removeAll();
 
@@ -289,48 +364,38 @@ public class Main extends JFrame implements ActionListener{
         double partial = Math.pow((1+r), t);
         double Monthly = (r*p*partial)/(partial-1);
 
+        String mon = String.format("%.2f", Monthly);
+        JLabel nuMon = new JLabel("Monthly Payment: " + mon);
+
         String m = String.format("%.2f", (double)t);
-        JLabel numL = new JLabel("Total Number of Payments: ");
-        JLabel num = new JLabel(m);
+        JLabel numL = new JLabel("Total Number of Payments: " + m);
 
         double dollarsPaid = Monthly*t;
         String dollar = String.format("%.2f", dollarsPaid);
-        JLabel payL = new JLabel("Total Dollars Paid: ");
-        JLabel doll = new JLabel(dollar);
+        JLabel payL = new JLabel("Total Dollars Paid: " + dollar);
 
         double storeInterest = dollarsPaid - p;
-        JLabel intL = new JLabel("Total Interest Paid: ");
         String i = String.format("%.2f", storeInterest);
-        JLabel inT = new JLabel(i);
+        JLabel intL = new JLabel("Total Interest Paid: " + i);
 
-        JLabel mon = new JLabel("Monthly Addition to Payment: ");
-        JLabel lump = new JLabel("Annual Lump Sum: ");
+        JLabel monn = new JLabel("Monthly Addition to Payment: ");
 
-        JTextField monTF = new JTextField();
+        monTF = new JTextField();
+        monTF.setPreferredSize(new Dimension(20, 10));
         monTF.setEditable(true);
-        JTextField lumpTF = new JTextField();
-        lumpTF.setEditable(true);
 
-        calcButton = new JButton("Calculate New Totals");
         buttonPanel.removeAll();
         buttonPanel.add(calcButton);
 
-        JLabel space = new JLabel("");
-
         imagePanel.removeAll();
-        imagePanel.setLayout(new GridLayout(7, 2));
+        imagePanel.setLayout(new GridLayout(12, 1));
         imagePanel.add(currentTotals);
-        imagePanel.add(space);
+        imagePanel.add(nuMon);
         imagePanel.add(numL);
-        imagePanel.add(num);
-        imagePanel.add(payL);
-        imagePanel.add(doll);
         imagePanel.add(intL);
-        imagePanel.add(inT);
-        imagePanel.add(mon);
+        imagePanel.add(payL);
+        imagePanel.add(monn);
         imagePanel.add(monTF);
-        imagePanel.add(lump);
-        imagePanel.add(lumpTF);
 
         containerPanel.add(titlePanel, BorderLayout.NORTH);
         containerPanel.add(imagePanel, BorderLayout.CENTER);
