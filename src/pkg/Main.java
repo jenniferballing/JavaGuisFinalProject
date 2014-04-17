@@ -12,45 +12,31 @@ import java.awt.event.ActionListener;
  * Created by JenniferBalling on 4/11/14.
  */
 public class Main extends JFrame implements ActionListener{
-    private JPanel buttonPanel, containerPanel, imagePanel, definitionsPanel, titlePanel, gridPanel;
+    private JPanel buttonPanel, containerPanel, imagePanel, definitionsPanel, titlePanel, gridPanel, scrollPanel;
     private JButton currentMortButton, futureMortButton, calcButton3, calcTotals2, calcTotals, earlyPayoffButton, backToStartButton;
-    private JLabel titleLabel, definitionsLabel, principleLabel, rateLabel, termLabel, downPayLabel, payoffLabel, toStartLabel, princDir, rateDir, termDir, downPayDir;
+    private JLabel titleLabel, definitionsLabel, principleLabel, rateLabel, termLabel, downPayLabel, princDir, rateDir, termDir, downPayDir;
     private ImageIcon housePic;
-    private static final int WIDTH = 500;
-    private static final int HEIGHT = 500;
+    private static final int WIDTH = 600, HEIGHT = 600;
     int [] paymentNum;
-    double [] paymentAmount;
-    double [] principalPayed;
-    double [] interestPayed;
-    double [] remainingBalance;
+    double [] paymentAmount, principalPayed, interestPayed, remainingBalance ;
     final JTextField principleTF = new JTextField();
     final JTextField rateTF = new JTextField();
     final JTextField downPayTF = new JTextField();
     final JTextField termTF = new JTextField();
-    private JPanel scrollPanel;
-
 
     public Main(){
 
         SetUp();
-
-
         setVisible(true);
         setSize(WIDTH+100, HEIGHT+100);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-
     }
     public static void main (String [] args){
         new Main();
-
     }
    public void SetUp(){
 
         //Initialize Variables
-        titleLabel= new JLabel("Amortization Schedule");
-
-        buttonPanel = new JPanel();
-
         currentMortButton = new JButton("Current Mortgage");
         futureMortButton = new JButton("Future Mortgage");
         calcButton3 = new JButton("Calculate 3 Years of Payments");
@@ -58,18 +44,19 @@ public class Main extends JFrame implements ActionListener{
         backToStartButton = new JButton("Back to Start");
         calcTotals = new JButton("Calculate Loan Totals");
         calcTotals2 = new JButton("Calculate Loan Totals");
+        futureHandler futureH = new futureHandler();
+        currentHandler currentH = new currentHandler();
 
-        payoffLabel = new JLabel();
-        toStartLabel = new JLabel();
+        futureMortButton.addActionListener(futureH);
+        currentMortButton.addActionListener(currentH);
+
 
         definitionsLabel = new JLabel("Definitions: ");
         principleLabel = new JLabel("Insert definitions here: ");
         rateLabel = new JLabel("Insert definitions here: ");
         termLabel = new JLabel("Insert definitions here: ");
         downPayLabel = new JLabel("Insert definitions here: ");
-
-        definitionsPanel = new JPanel();
-
+        titleLabel= new JLabel("Amortization Schedule");
         princDir = new JLabel("Principal: ");
         termDir = new JLabel("Term: ");
         rateDir = new JLabel("Rate: ");
@@ -80,15 +67,10 @@ public class Main extends JFrame implements ActionListener{
 
         //Color.HSBtoRGB((float) 0.952, (float) 0.522, (float) 1.000);
 
+        definitionsPanel = new JPanel();
         imagePanel = new JPanel();
-
         containerPanel = new JPanel();
-
-        futureHandler futureH = new futureHandler();
-        currentHandler currentH = new currentHandler();
-
-        futureMortButton.addActionListener(futureH);
-        currentMortButton.addActionListener(currentH);
+        buttonPanel = new JPanel();
 
         calcButton3.addActionListener(new ActionListener() {
             @Override
@@ -155,6 +137,8 @@ public class Main extends JFrame implements ActionListener{
        backToStartButton.addActionListener(new ActionListener() {
            @Override
            public void actionPerformed(ActionEvent e) {
+               imagePanel.removeAll();
+               buttonPanel.removeAll();
                containerPanel.removeAll();
                OpeningScreen();
            }
@@ -167,12 +151,12 @@ public class Main extends JFrame implements ActionListener{
         titlePanel = new JPanel();
         titlePanel.setBackground(Color.BLUE);
         titlePanel.setPreferredSize(new Dimension(500, 75));
-        titleLabel.setLayout(new FlowLayout(FlowLayout.CENTER));
+        titlePanel.add(titleLabel);
         titlePanel.add(titleLabel);
 
+        titleLabel.setLayout(new FlowLayout(FlowLayout.CENTER));
         titleLabel.setFont(titleLabel.getFont().deriveFont(25f));
         titleLabel.setForeground(Color.white);//(Color.getHSBColor((float) .0867,(float) .137, (float) 1.0));
-        titlePanel.add(titleLabel);
 
         principleTF.setEditable(true);
         rateTF.setEditable(true);
@@ -182,14 +166,13 @@ public class Main extends JFrame implements ActionListener{
         buttonPanel.setBackground(Color.green);
         buttonPanel.setPreferredSize(new Dimension(400, 100));
         buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+        buttonPanel.add(currentMortButton);
+        buttonPanel.add(futureMortButton);
 
         imagePanel.setBackground(Color.GRAY);//(Color.getHSBColor((float) 0.000,(float) 0.811, (float) 0.699));
         imagePanel.setPreferredSize(new Dimension(400, 350));
         imagePanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
         //imagePanel.add(housePic);
-
-        buttonPanel.add(currentMortButton);
-        buttonPanel.add(futureMortButton);
 
         containerPanel.setBackground(Color.BLACK);//(Color.getHSBColor((float) 0.00,(float) 0.00, (float) 0.565));//(Color.getHSBColor((float) 0.923, (float) 0.607, (float) 0.957));
         containerPanel.setVisible(true);
@@ -197,16 +180,12 @@ public class Main extends JFrame implements ActionListener{
         containerPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
         containerPanel.add(imagePanel);
         containerPanel.add(buttonPanel);
-
         containerPanel.add(titlePanel, BorderLayout.NORTH);
-        //containerPanel.add(definitionsPanel, BorderLayout.WEST);
         containerPanel.add(imagePanel, BorderLayout.CENTER);
         containerPanel.add(buttonPanel, BorderLayout.SOUTH);
 
         add(containerPanel);
-
         update(this.getGraphics());
-
         revalidate();
         repaint();
     }
@@ -217,6 +196,7 @@ public class Main extends JFrame implements ActionListener{
         buttonPanel.add(calcButton3);
 
         imagePanel.setPreferredSize(new Dimension(WIDTH-200, HEIGHT-300));
+        imagePanel.setLayout(new GridLayout(5, 2));
         imagePanel.add(termDir);
         imagePanel.add(termTF);
         imagePanel.add(rateDir);
@@ -226,9 +206,6 @@ public class Main extends JFrame implements ActionListener{
         imagePanel.add(princDir);
         imagePanel.add(principleTF);
 
-        containerPanel.remove(currentMortButton);
-        containerPanel.remove(futureMortButton);
-
         definitionsPanel.setBackground(Color.darkGray);
         definitionsPanel.setPreferredSize(new Dimension(125, 350));
         definitionsPanel.add(definitionsLabel);
@@ -236,22 +213,20 @@ public class Main extends JFrame implements ActionListener{
         definitionsPanel.add(rateLabel);
         definitionsPanel.add(downPayLabel);
         definitionsPanel.add(termLabel);
-
-        containerPanel.setLayout(new BorderLayout());
-        imagePanel.setLayout(new GridLayout(5, 2));
         definitionsPanel.setPreferredSize(new Dimension(100, 200));
         definitionsPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
 
+        containerPanel.remove(currentMortButton);
+        containerPanel.remove(futureMortButton);
+        containerPanel.setLayout(new BorderLayout());
         containerPanel.add(titlePanel, BorderLayout.NORTH);
         containerPanel.add(definitionsPanel, BorderLayout.WEST);
         containerPanel.add(imagePanel, BorderLayout.EAST);
         containerPanel.add(buttonPanel, BorderLayout.SOUTH);
 
         add(containerPanel);
-
         revalidate();
         repaint();
-
     }
     public void afterCurrentButton(){
 

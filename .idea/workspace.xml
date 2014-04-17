@@ -69,15 +69,16 @@
       <file leaf-file-name="Main.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/pkg/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="31" selection-start="1176" selection-end="1176" vertical-scroll-proportion="0.59539473" vertical-offset="312" max-vertical-offset="7021">
+            <state line="140" column="39" selection-start="5151" selection-end="5151" vertical-scroll-proportion="0.8526012" vertical-offset="1898" max-vertical-offset="4726">
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2650#2668#0" expanded="false" />
-                <element signature="e#5173#5369#0" expanded="true" />
-                <element signature="e#5359#5360#0" expanded="true" />
+                <element signature="e#2593#2611#0" expanded="false" />
+                <element signature="e#4973#5248#0" expanded="true" />
+                <element signature="e#5238#5239#0" expanded="true" />
                 <element signature="method#actionPerformed#0;class#Main#0" expanded="false" />
                 <element signature="class#currentHandler#0;class#Main#0" expanded="false" />
                 <element signature="method#PrintTotals#0;class#Main#0" expanded="false" />
+                <element signature="method#AllPayments#0;class#Main#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -102,8 +103,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="width" value="776" />
-    <option name="height" value="728" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1296" />
+    <option name="height" value="744" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -373,7 +376,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="776" height="728" extended-state="0" />
+    <frame x="-8" y="-8" width="1296" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -392,8 +395,8 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.05292479" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3839733" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.03069467" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.37398374" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -427,12 +430,13 @@
         <state line="46" column="30" selection-start="1436" selection-end="1436" vertical-scroll-proportion="0.0" vertical-offset="782" max-vertical-offset="1054">
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2650#2668#0" expanded="false" />
-            <element signature="e#5173#5369#0" expanded="true" />
-            <element signature="e#5359#5360#0" expanded="true" />
+            <element signature="e#2593#2611#0" expanded="false" />
+            <element signature="e#4973#5248#0" expanded="true" />
+            <element signature="e#5238#5239#0" expanded="true" />
             <element signature="method#actionPerformed#0;class#Main#0" expanded="false" />
             <element signature="class#currentHandler#0;class#Main#0" expanded="false" />
             <element signature="method#PrintTotals#0;class#Main#0" expanded="false" />
+            <element signature="method#AllPayments#0;class#Main#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -442,12 +446,13 @@
         <state line="83" column="67" selection-start="2975" selection-end="2975" vertical-scroll-proportion="0.0" vertical-offset="1156" max-vertical-offset="1887">
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2650#2668#0" expanded="false" />
-            <element signature="e#5173#5369#0" expanded="true" />
-            <element signature="e#5359#5360#0" expanded="true" />
+            <element signature="e#2593#2611#0" expanded="false" />
+            <element signature="e#4973#5248#0" expanded="true" />
+            <element signature="e#5238#5239#0" expanded="true" />
             <element signature="method#actionPerformed#0;class#Main#0" expanded="false" />
             <element signature="class#currentHandler#0;class#Main#0" expanded="false" />
             <element signature="method#PrintTotals#0;class#Main#0" expanded="false" />
+            <element signature="method#AllPayments#0;class#Main#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -473,15 +478,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pkg/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="31" selection-start="1176" selection-end="1176" vertical-scroll-proportion="0.59539473" vertical-offset="312" max-vertical-offset="7021">
+        <state line="140" column="39" selection-start="5151" selection-end="5151" vertical-scroll-proportion="0.8526012" vertical-offset="1898" max-vertical-offset="4726">
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2650#2668#0" expanded="false" />
-            <element signature="e#5173#5369#0" expanded="true" />
-            <element signature="e#5359#5360#0" expanded="true" />
+            <element signature="e#2593#2611#0" expanded="false" />
+            <element signature="e#4973#5248#0" expanded="true" />
+            <element signature="e#5238#5239#0" expanded="true" />
             <element signature="method#actionPerformed#0;class#Main#0" expanded="false" />
             <element signature="class#currentHandler#0;class#Main#0" expanded="false" />
             <element signature="method#PrintTotals#0;class#Main#0" expanded="false" />
+            <element signature="method#AllPayments#0;class#Main#0" expanded="false" />
           </folding>
         </state>
       </provider>
