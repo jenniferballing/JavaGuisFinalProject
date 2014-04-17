@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="299034b2-7112-4814-a59f-f9121e443233" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pkg/Main.java" afterPath="$PROJECT_DIR$/src/pkg/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="JavaGuisFinalProject.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -70,17 +69,15 @@
       <file leaf-file-name="Main.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/pkg/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="439" column="0" selection-start="15056" selection-end="15056" vertical-scroll-proportion="0.6909091" vertical-offset="792" max-vertical-offset="1122">
+            <state line="29" column="31" selection-start="1176" selection-end="1176" vertical-scroll-proportion="0.59539473" vertical-offset="312" max-vertical-offset="7021">
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="method#openingScreen#0;class#Main#0" expanded="false" />
-                <element signature="e#3507#3525#0" expanded="false" />
-                <element signature="method#afterFutureButton#0;class#Main#0" expanded="false" />
-                <element signature="method#afterCurrentButton#0;class#Main#0" expanded="false" />
+                <element signature="e#2650#2668#0" expanded="false" />
+                <element signature="e#5173#5369#0" expanded="true" />
+                <element signature="e#5359#5360#0" expanded="true" />
                 <element signature="method#actionPerformed#0;class#Main#0" expanded="false" />
                 <element signature="class#currentHandler#0;class#Main#0" expanded="false" />
                 <element signature="method#PrintTotals#0;class#Main#0" expanded="false" />
-                <element signature="method#AllPayments#0;class#Main#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -430,14 +427,12 @@
         <state line="46" column="30" selection-start="1436" selection-end="1436" vertical-scroll-proportion="0.0" vertical-offset="782" max-vertical-offset="1054">
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#openingScreen#0;class#Main#0" expanded="false" />
-            <element signature="e#3507#3525#0" expanded="false" />
-            <element signature="method#afterFutureButton#0;class#Main#0" expanded="false" />
-            <element signature="method#afterCurrentButton#0;class#Main#0" expanded="false" />
+            <element signature="e#2650#2668#0" expanded="false" />
+            <element signature="e#5173#5369#0" expanded="true" />
+            <element signature="e#5359#5360#0" expanded="true" />
             <element signature="method#actionPerformed#0;class#Main#0" expanded="false" />
             <element signature="class#currentHandler#0;class#Main#0" expanded="false" />
             <element signature="method#PrintTotals#0;class#Main#0" expanded="false" />
-            <element signature="method#AllPayments#0;class#Main#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -447,14 +442,12 @@
         <state line="83" column="67" selection-start="2975" selection-end="2975" vertical-scroll-proportion="0.0" vertical-offset="1156" max-vertical-offset="1887">
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#openingScreen#0;class#Main#0" expanded="false" />
-            <element signature="e#3507#3525#0" expanded="false" />
-            <element signature="method#afterFutureButton#0;class#Main#0" expanded="false" />
-            <element signature="method#afterCurrentButton#0;class#Main#0" expanded="false" />
+            <element signature="e#2650#2668#0" expanded="false" />
+            <element signature="e#5173#5369#0" expanded="true" />
+            <element signature="e#5359#5360#0" expanded="true" />
             <element signature="method#actionPerformed#0;class#Main#0" expanded="false" />
             <element signature="class#currentHandler#0;class#Main#0" expanded="false" />
             <element signature="method#PrintTotals#0;class#Main#0" expanded="false" />
-            <element signature="method#AllPayments#0;class#Main#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -480,17 +473,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pkg/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="439" column="0" selection-start="15056" selection-end="15056" vertical-scroll-proportion="0.6909091" vertical-offset="792" max-vertical-offset="1122">
+        <state line="29" column="31" selection-start="1176" selection-end="1176" vertical-scroll-proportion="0.59539473" vertical-offset="312" max-vertical-offset="7021">
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#openingScreen#0;class#Main#0" expanded="false" />
-            <element signature="e#3507#3525#0" expanded="false" />
-            <element signature="method#afterFutureButton#0;class#Main#0" expanded="false" />
-            <element signature="method#afterCurrentButton#0;class#Main#0" expanded="false" />
+            <element signature="e#2650#2668#0" expanded="false" />
+            <element signature="e#5173#5369#0" expanded="true" />
+            <element signature="e#5359#5360#0" expanded="true" />
             <element signature="method#actionPerformed#0;class#Main#0" expanded="false" />
             <element signature="class#currentHandler#0;class#Main#0" expanded="false" />
             <element signature="method#PrintTotals#0;class#Main#0" expanded="false" />
-            <element signature="method#AllPayments#0;class#Main#0" expanded="false" />
           </folding>
         </state>
       </provider>

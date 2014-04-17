@@ -27,12 +27,12 @@ public class Main extends JFrame implements ActionListener{
     final JTextField rateTF = new JTextField();
     final JTextField downPayTF = new JTextField();
     final JTextField termTF = new JTextField();
-
+    private JPanel scrollPanel;
 
 
     public Main(){
 
-        openingScreen();
+        SetUp();
 
 
         setVisible(true);
@@ -44,26 +44,12 @@ public class Main extends JFrame implements ActionListener{
         new Main();
 
     }
-   public void openingScreen(){
+   public void SetUp(){
 
         //Initialize Variables
-
         titleLabel= new JLabel("Amortization Schedule");
-        titleLabel.setFont(titleLabel.getFont().deriveFont(25f));
-        titleLabel.setForeground(Color.white);//(Color.getHSBColor((float) .0867,(float) .137, (float) 1.0));
-
-
-        principleTF.setEditable(true);
-
-        rateTF.setEditable(true);
-
-        downPayTF.setEditable(true);
-        termTF.setEditable(true);//DO SOME ERROR CHECKING!
 
         buttonPanel = new JPanel();
-        buttonPanel.setBackground(Color.green);
-        buttonPanel.setPreferredSize(new Dimension(400, 100));
-        buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
 
         currentMortButton = new JButton("Current Mortgage");
         futureMortButton = new JButton("Future Mortgage");
@@ -83,14 +69,6 @@ public class Main extends JFrame implements ActionListener{
         downPayLabel = new JLabel("Insert definitions here: ");
 
         definitionsPanel = new JPanel();
-        definitionsPanel.setBackground(Color.darkGray);
-        definitionsPanel.setPreferredSize(new Dimension(125, 350));
-        definitionsPanel.add(definitionsLabel);
-        definitionsPanel.add(principleLabel);
-        definitionsPanel.add(rateLabel);
-        definitionsPanel.add(downPayLabel);
-
-        definitionsPanel.add(termLabel);
 
         princDir = new JLabel("Principal: ");
         termDir = new JLabel("Term: ");
@@ -103,23 +81,8 @@ public class Main extends JFrame implements ActionListener{
         //Color.HSBtoRGB((float) 0.952, (float) 0.522, (float) 1.000);
 
         imagePanel = new JPanel();
-        imagePanel.setBackground(Color.GRAY);//(Color.getHSBColor((float) 0.000,(float) 0.811, (float) 0.699));
-        imagePanel.setPreferredSize(new Dimension(400, 350));
-        imagePanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
-        //imagePanel.add(housePic);
-
-        buttonPanel.add(currentMortButton);
-        buttonPanel.add(futureMortButton);
 
         containerPanel = new JPanel();
-        containerPanel.setBackground(Color.BLACK);//(Color.getHSBColor((float) 0.00,(float) 0.00, (float) 0.565));//(Color.getHSBColor((float) 0.923, (float) 0.607, (float) 0.957));
-        containerPanel.setVisible(true);
-        containerPanel.setPreferredSize(new Dimension(WIDTH, HEIGHT));
-        containerPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
-        containerPanel.add(titleLabel);
-        containerPanel.add(imagePanel);
-        containerPanel.add(buttonPanel);
-
 
         futureHandler futureH = new futureHandler();
         currentHandler currentH = new currentHandler();
@@ -183,15 +146,70 @@ public class Main extends JFrame implements ActionListener{
                PrintTotals(monthlyPayment, r, t, p);
            }
        });
+       earlyPayoffButton.addActionListener(new ActionListener() {
+           @Override
+           public void actionPerformed(ActionEvent e) {
 
+           }
+       });
+       backToStartButton.addActionListener(new ActionListener() {
+           @Override
+           public void actionPerformed(ActionEvent e) {
+               containerPanel.removeAll();
+               OpeningScreen();
+           }
+       });
 
-       add(containerPanel);
+       OpeningScreen();
+   }
+    public void OpeningScreen (){
+
+        titlePanel = new JPanel();
+        titlePanel.setBackground(Color.BLUE);
+        titlePanel.setPreferredSize(new Dimension(500, 75));
+        titleLabel.setLayout(new FlowLayout(FlowLayout.CENTER));
+        titlePanel.add(titleLabel);
+
+        titleLabel.setFont(titleLabel.getFont().deriveFont(25f));
+        titleLabel.setForeground(Color.white);//(Color.getHSBColor((float) .0867,(float) .137, (float) 1.0));
+        titlePanel.add(titleLabel);
+
+        principleTF.setEditable(true);
+        rateTF.setEditable(true);
+        downPayTF.setEditable(true);
+        termTF.setEditable(true);//DO SOME ERROR CHECKING!
+
+        buttonPanel.setBackground(Color.green);
+        buttonPanel.setPreferredSize(new Dimension(400, 100));
+        buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+
+        imagePanel.setBackground(Color.GRAY);//(Color.getHSBColor((float) 0.000,(float) 0.811, (float) 0.699));
+        imagePanel.setPreferredSize(new Dimension(400, 350));
+        imagePanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
+        //imagePanel.add(housePic);
+
+        buttonPanel.add(currentMortButton);
+        buttonPanel.add(futureMortButton);
+
+        containerPanel.setBackground(Color.BLACK);//(Color.getHSBColor((float) 0.00,(float) 0.00, (float) 0.565));//(Color.getHSBColor((float) 0.923, (float) 0.607, (float) 0.957));
+        containerPanel.setVisible(true);
+        containerPanel.setPreferredSize(new Dimension(WIDTH, HEIGHT));
+        containerPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+        containerPanel.add(imagePanel);
+        containerPanel.add(buttonPanel);
+
+        containerPanel.add(titlePanel, BorderLayout.NORTH);
+        //containerPanel.add(definitionsPanel, BorderLayout.WEST);
+        containerPanel.add(imagePanel, BorderLayout.CENTER);
+        containerPanel.add(buttonPanel, BorderLayout.SOUTH);
+
+        add(containerPanel);
 
         update(this.getGraphics());
 
         revalidate();
         repaint();
-   }
+    }
     public void afterFutureButton(){
 
         buttonPanel.removeAll();
@@ -208,17 +226,16 @@ public class Main extends JFrame implements ActionListener{
         imagePanel.add(princDir);
         imagePanel.add(principleTF);
 
-        JPanel titlePanel = new JPanel();
-        titlePanel.setBackground(Color.BLUE);
-        titlePanel.setPreferredSize(new Dimension(500, 75));
-        titleLabel.setLayout(new FlowLayout(FlowLayout.CENTER));
-        titlePanel.add(titleLabel);
-
-
         containerPanel.remove(currentMortButton);
         containerPanel.remove(futureMortButton);
-        containerPanel.remove(titleLabel);
-        containerPanel.remove(imagePanel);
+
+        definitionsPanel.setBackground(Color.darkGray);
+        definitionsPanel.setPreferredSize(new Dimension(125, 350));
+        definitionsPanel.add(definitionsLabel);
+        definitionsPanel.add(principleLabel);
+        definitionsPanel.add(rateLabel);
+        definitionsPanel.add(downPayLabel);
+        definitionsPanel.add(termLabel);
 
         containerPanel.setLayout(new BorderLayout());
         imagePanel.setLayout(new GridLayout(5, 2));
@@ -229,6 +246,8 @@ public class Main extends JFrame implements ActionListener{
         containerPanel.add(definitionsPanel, BorderLayout.WEST);
         containerPanel.add(imagePanel, BorderLayout.EAST);
         containerPanel.add(buttonPanel, BorderLayout.SOUTH);
+
+        add(containerPanel);
 
         revalidate();
         repaint();
@@ -331,48 +350,49 @@ public class Main extends JFrame implements ActionListener{
         containerPanel.remove(imagePanel);
         containerPanel.remove(calcButton3);
         containerPanel.remove(definitionsPanel);
-        int termNum = 360;
+
+        earlyPayoffButton.setText("Run Numbers for Early Payoff");
+        backToStartButton.setText("Back to Start");
+        buttonPanel.removeAll();
+        buttonPanel.add(earlyPayoffButton);
+        buttonPanel.add(backToStartButton);
 
         //CREATE ARRAYS OF INFO
 
-        paymentNum = new int[termNum];//[term*12];
-        for(int i=0; i<termNum; i++){
+        paymentNum = new int[t];//[term*12];
+        for(int i=0; i<t; i++){
             paymentNum[i] = i+1;
         }
 
-        paymentAmount = new double[termNum];//[term*12];
-        for(int i=0; i<termNum; i++){
+        paymentAmount = new double[t];//[term*12];
+        for(int i=0; i<t; i++){
             String m = String.format("%.2f", Monthly);
             double monthly = Double.parseDouble(m);
             paymentAmount[i] = monthly;
         }
 
-        principalPayed = new double[termNum];//[term*12];
+        principalPayed = new double[t];
+        remainingBalance = new double[t];
+        interestPayed = new double[t];
         double tempP = p;
-        for(int i=0; i<termNum; i++){
+        for(int i=0; i<t; i++){
             double payed =  tempP*rate;
             double prince = Monthly-payed;
             String m = String.format("%2.2f", prince);
             double num = Double.parseDouble(m);
             principalPayed[i] = num;
-            tempP-=Monthly;
-        }
-        interestPayed = new double[termNum];//[term*12];
-        tempP = p;
-        for(int i=0; i<termNum; i++){
-            double payed =  tempP*rate;
-            String m = String.format("%2.2f", payed);
-            double num = Double.parseDouble(m);
-            interestPayed[i] = num;
-            tempP-=Monthly;
-        }
-        remainingBalance = new double[termNum];//[term*12];
-        tempP = p;
-        for(int i=0; i<termNum; i++){
-            String m = String.format("%2.2f", tempP);
-            double num = Double.parseDouble(m);
-            remainingBalance[i] = num;
-            tempP-= Monthly;
+
+            double re = tempP - num;
+            String n = String.format("%2.2f", re);
+            double remain = Double.parseDouble(n);
+            remainingBalance[i] = remain;
+
+            double in = Monthly - num;
+            String inter = String.format("%2.2f", in);
+            double interest = Double.parseDouble(inter);
+            interestPayed [i] = interest;
+
+            tempP-=num;
         }
 
         //CREATE NEW GRIDDED PANEL
@@ -386,7 +406,7 @@ public class Main extends JFrame implements ActionListener{
         gridPanel = new JPanel();
         containerPanel.setPreferredSize(new Dimension(800, 800));
         gridPanel.setPreferredSize(new Dimension(WIDTH+200, HEIGHT+4000));
-        gridPanel.setLayout(new GridLayout(termNum+1, 5));
+        gridPanel.setLayout(new GridLayout(t+1, 5));
 
         gridPanel.add(numL);
         gridPanel.add(payL);
@@ -394,7 +414,7 @@ public class Main extends JFrame implements ActionListener{
         gridPanel.add(intL);
         gridPanel.add(remainL);
 
-        for(int j=0; j<termNum; j++){
+        for(int j=0; j<t; j++){
             //Num
             JLabel label = new JLabel();
             label.setText(Integer.toString(paymentNum[j]));
@@ -423,7 +443,7 @@ public class Main extends JFrame implements ActionListener{
         }
         titleLabel.setText("All Payments: ");
 
-        JPanel scrollPanel = new JPanel();
+        scrollPanel = new JPanel();
         scrollPanel.setLayout(new BorderLayout());
         //getContentPane().add(scrollPanel);
 
