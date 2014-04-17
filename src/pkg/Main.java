@@ -13,7 +13,7 @@ import java.awt.event.ActionListener;
  */
 public class Main extends JFrame implements ActionListener{
     private JPanel buttonPanel, containerPanel, imagePanel, definitionsPanel, titlePanel, gridPanel;
-    private JButton currentMortButton, futureMortButton, calcButton3, calcTotals, earlyPayoffButton, backToStartButton;
+    private JButton currentMortButton, futureMortButton, calcButton3, calcTotals2, calcTotals, earlyPayoffButton, backToStartButton;
     private JLabel titleLabel, definitionsLabel, principleLabel, rateLabel, termLabel, downPayLabel, payoffLabel, toStartLabel, princDir, rateDir, termDir, downPayDir;
     private ImageIcon housePic;
     private static final int WIDTH = 500;
@@ -36,7 +36,7 @@ public class Main extends JFrame implements ActionListener{
 
 
         setVisible(true);
-        setSize(WIDTH+100, HEIGHT+150);
+        setSize(WIDTH+100, HEIGHT+100);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
     }
@@ -71,6 +71,7 @@ public class Main extends JFrame implements ActionListener{
         earlyPayoffButton = new JButton("Early Payoff");
         backToStartButton = new JButton("Back to Start");
         calcTotals = new JButton("Calculate Loan Totals");
+        calcTotals2 = new JButton("Calculate Loan Totals");
 
         payoffLabel = new JLabel();
         toStartLabel = new JLabel();
@@ -142,7 +143,7 @@ public class Main extends JFrame implements ActionListener{
                 double partial = Math.pow((1+r), t);
                 double monthlyPayment = (r*p*partial)/(partial-1);
 
-                PrintFirstThreeYearSchedule(monthlyPayment, r, t, p);
+                AllPayments(monthlyPayment, r, t, p);
 
             }
         });
@@ -166,8 +167,25 @@ public class Main extends JFrame implements ActionListener{
            }
        });
 
+       calcTotals2.addActionListener(new ActionListener() {
+           @Override
+           public void actionPerformed(ActionEvent e) {
 
-        add(containerPanel);
+               int t = Integer.parseInt(termTF.getText());
+               double r = Double.parseDouble(rateTF.getText());
+               double p = Double.parseDouble(principleTF.getText());
+
+               r = (r/100)/12;
+
+               double partial = Math.pow((1+r), t);
+               double monthlyPayment = (r*p*partial)/(partial-1);
+
+               PrintTotals(monthlyPayment, r, t, p);
+           }
+       });
+
+
+       add(containerPanel);
 
         update(this.getGraphics());
 
@@ -218,11 +236,17 @@ public class Main extends JFrame implements ActionListener{
     }
     public void afterCurrentButton(){
 
+        buttonPanel.removeAll();
+        buttonPanel.add(calcTotals2);
+        buttonPanel.add(calcButton3);
+
         imagePanel.setPreferredSize(new Dimension(WIDTH-150, HEIGHT-150));
         imagePanel.add(termDir);
+        termDir.setText("Months Remaining: ");
         imagePanel.add(termTF);
         imagePanel.add(rateDir);
         imagePanel.add(rateTF);
+        princDir.setText("Remaining Principal: ");
         imagePanel.add(princDir);
         imagePanel.add(principleTF);
 
@@ -245,6 +269,7 @@ public class Main extends JFrame implements ActionListener{
         containerPanel.add(titlePanel, BorderLayout.NORTH);
         containerPanel.add(definitionsPanel, BorderLayout.WEST);
         containerPanel.add(imagePanel, BorderLayout.EAST);
+        containerPanel.add(buttonPanel, BorderLayout.SOUTH);
 
 
         revalidate();
@@ -301,12 +326,12 @@ public class Main extends JFrame implements ActionListener{
         revalidate();
         repaint();
     }
-    public void PrintFirstThreeYearSchedule(double Monthly, double rate, int t, double p){
+    public void AllPayments(double Monthly, double rate, int t, double p){
 
         containerPanel.remove(imagePanel);
         containerPanel.remove(calcButton3);
         containerPanel.remove(definitionsPanel);
-        int termNum = 36;
+        int termNum = 360;
 
         //CREATE ARRAYS OF INFO
 
@@ -360,7 +385,7 @@ public class Main extends JFrame implements ActionListener{
 
         gridPanel = new JPanel();
         containerPanel.setPreferredSize(new Dimension(800, 800));
-        gridPanel.setPreferredSize(new Dimension(WIDTH+200, HEIGHT));
+        gridPanel.setPreferredSize(new Dimension(WIDTH+200, HEIGHT+4000));
         gridPanel.setLayout(new GridLayout(termNum+1, 5));
 
         gridPanel.add(numL);
@@ -396,8 +421,18 @@ public class Main extends JFrame implements ActionListener{
             gridPanel.add(rLabel);
 
         }
-        titleLabel.setText("First Three Years of Payments: ");
-        containerPanel.add(gridPanel);
+        titleLabel.setText("All Payments: ");
+
+        JPanel scrollPanel = new JPanel();
+        scrollPanel.setLayout(new BorderLayout());
+        //getContentPane().add(scrollPanel);
+
+        JScrollPane scrollPane = new JScrollPane();
+        scrollPane.getViewport().add(gridPanel);
+        scrollPanel.add(scrollPane, BorderLayout.CENTER);
+
+        containerPanel.add(scrollPanel);
+        //containerPanel.add(scroll, BorderLayout.CENTER);
         revalidate();
         repaint();
     }
