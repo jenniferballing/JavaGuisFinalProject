@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="299034b2-7112-4814-a59f-f9121e443233" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backG1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/housePic.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pkg/Main.java" afterPath="$PROJECT_DIR$/src/pkg/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="JavaGuisFinalProject.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -72,30 +69,15 @@
       <file leaf-file-name="Main.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/pkg/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="245" column="0" selection-start="9438" selection-end="9438" vertical-scroll-proportion="0.3314917" vertical-offset="3705" max-vertical-offset="10506">
+            <state line="257" column="40" selection-start="10108" selection-end="10108" vertical-scroll-proportion="0.2090909" vertical-offset="3965" max-vertical-offset="6426">
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#6439#9446#0" expanded="true" />
                 <element signature="method#actionPerformed#0;class#Main#0" expanded="false" />
-                <element signature="class#futureHandler#0;class#Main#0" expanded="false" />
-                <element signature="class#currentHandler#0;class#Main#0" expanded="false" />
+                <element signature="method#PrintTotals#0;class#Main#0" expanded="false" />
+                <element signature="method#AllPayments#0;class#Main#0" expanded="false" />
                 <element signature="class#TestTexture#0;class#Main#0" expanded="false" />
               </folding>
             </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="house2.png" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/house2.png">
-          <provider selected="true" editor-type-id="images">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="peach1.png" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/peach1.png">
-          <provider selected="true" editor-type-id="images">
-            <state />
           </provider>
         </entry>
       </file>
@@ -118,7 +100,7 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="width" value="774" />
+    <option name="width" value="1334" />
     <option name="height" value="728" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
@@ -223,8 +205,8 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\jensbaby\Documents\GitHub\JavaGuisFinalProject\src" />
       <recent name="C:\Users\jensbaby\Documents\GitHub\JavaGuisFinalProject" />
+      <recent name="C:\Users\jensbaby\Documents\GitHub\JavaGuisFinalProject\src" />
     </key>
     <key name="ExtractSuperBase.RECENT_KEYS">
       <recent name="pkg" />
@@ -412,7 +394,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="774" height="728" extended-state="0" />
+    <frame x="0" y="0" width="1334" height="728" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -432,8 +414,8 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.046089385" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3305509" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15438871" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.016694492" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -466,10 +448,9 @@
         <state line="46" column="30" selection-start="1436" selection-end="1436" vertical-scroll-proportion="0.0" vertical-offset="782" max-vertical-offset="1054">
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#6439#9446#0" expanded="true" />
             <element signature="method#actionPerformed#0;class#Main#0" expanded="false" />
-            <element signature="class#futureHandler#0;class#Main#0" expanded="false" />
-            <element signature="class#currentHandler#0;class#Main#0" expanded="false" />
+            <element signature="method#PrintTotals#0;class#Main#0" expanded="false" />
+            <element signature="method#AllPayments#0;class#Main#0" expanded="false" />
             <element signature="class#TestTexture#0;class#Main#0" expanded="false" />
           </folding>
         </state>
@@ -480,10 +461,9 @@
         <state line="83" column="67" selection-start="2975" selection-end="2975" vertical-scroll-proportion="0.0" vertical-offset="1156" max-vertical-offset="1887">
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#6439#9446#0" expanded="true" />
             <element signature="method#actionPerformed#0;class#Main#0" expanded="false" />
-            <element signature="class#futureHandler#0;class#Main#0" expanded="false" />
-            <element signature="class#currentHandler#0;class#Main#0" expanded="false" />
+            <element signature="method#PrintTotals#0;class#Main#0" expanded="false" />
+            <element signature="method#AllPayments#0;class#Main#0" expanded="false" />
             <element signature="class#TestTexture#0;class#Main#0" expanded="false" />
           </folding>
         </state>
@@ -534,13 +514,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pkg/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="245" column="0" selection-start="9438" selection-end="9438" vertical-scroll-proportion="0.3314917" vertical-offset="3705" max-vertical-offset="10506">
+        <state line="257" column="40" selection-start="10108" selection-end="10108" vertical-scroll-proportion="0.2090909" vertical-offset="3965" max-vertical-offset="6426">
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#6439#9446#0" expanded="true" />
             <element signature="method#actionPerformed#0;class#Main#0" expanded="false" />
-            <element signature="class#futureHandler#0;class#Main#0" expanded="false" />
-            <element signature="class#currentHandler#0;class#Main#0" expanded="false" />
+            <element signature="method#PrintTotals#0;class#Main#0" expanded="false" />
+            <element signature="method#AllPayments#0;class#Main#0" expanded="false" />
             <element signature="class#TestTexture#0;class#Main#0" expanded="false" />
           </folding>
         </state>
