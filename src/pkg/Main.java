@@ -1,22 +1,22 @@
 package pkg;
 
 
-import sun.management.resources.agent_fr;
-
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 
 /**
  * Created by JenniferBalling on 4/11/14.
  */
 public class Main extends JFrame implements ActionListener{
     private JPanel buttonPanel, containerPanel, imagePanel, definitionsPanel, titlePanel, gridPanel, scrollPanel;
-    private JButton currentMortButton, futureMortButton, calcButton3, calcTotals2, calcTotals, earlyPayoffButton, backToStartButton, calcButton;
-    private JLabel titleLabel, definitionsLabel, principleLabel, rateLabel, termLabel, downPayLabel, princDir, rateDir, termDir, downPayDir;
+    private JButton currentMortButton, futureMortButton, calcButtonF, calcButtonC, calcTotalsC, calcTotalsF, earlyPayoffButton, backToStartButton, calcButton;
+    private JLabel titleLabel, houseLabel, definitionsLabel, principleLabel, rateLabel, termLabel, downPayLabel, princDir, rateDir, termDir, downPayDir;
     private ImageIcon housePic;
-    private static final int WIDTH = 600, HEIGHT = 600;
+    private static final int WIDTH = 700, HEIGHT = 600;
     int [] paymentNum;
     double [] paymentAmount, principalPayed, interestPayed, remainingBalance ;
     private JTextField monTF;
@@ -28,8 +28,9 @@ public class Main extends JFrame implements ActionListener{
     public Main(){
 
         SetUp();
+        pack();
         setVisible(true);
-        setSize(WIDTH+100, HEIGHT+100);
+        setSize(WIDTH, HEIGHT);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
     public static void main (String [] args){
@@ -40,11 +41,12 @@ public class Main extends JFrame implements ActionListener{
         //Initialize Variables
         currentMortButton = new JButton("Current Mortgage");
         futureMortButton = new JButton("Future Mortgage");
-        calcButton3 = new JButton("Calculate 3 Years of Payments");
+        calcButtonF = new JButton("Calculate All Payments");
+        calcButtonC = new JButton("Calculate All Payments");
         earlyPayoffButton = new JButton("Early Payoff");
         backToStartButton = new JButton("Back to Start");
-        calcTotals = new JButton("Calculate Loan Totals");
-        calcTotals2 = new JButton("Calculate Loan Totals");
+        calcTotalsF = new JButton("Calculate Loan Totals");
+        calcTotalsC = new JButton("Calculate Loan Totals");
         calcButton = new JButton("Calculate New Totals");
         futureHandler futureH = new futureHandler();
         currentHandler currentH = new currentHandler();
@@ -64,17 +66,19 @@ public class Main extends JFrame implements ActionListener{
         rateDir = new JLabel("Rate: ");
         downPayDir = new JLabel("Down Payment: ");
 
-        housePic = new ImageIcon();
-        //housePic picture
-
-        //Color.HSBtoRGB((float) 0.952, (float) 0.522, (float) 1.000);
+        //housePic = new ImageIcon("housePic.png");//.getImage("housePic.png");
+        //housePic = new ImageIcon(this.getClass().getResource("housePic.png"));
+        //houseLabel = new JLabel(housePic);
+        //houseLabel.setIcon(housePic);
+        //Color.HSBtoRGB((float) 0.952, (float) 0.522, (float) 1.0
 
         definitionsPanel = new JPanel();
         imagePanel = new JPanel();
         containerPanel = new JPanel();
         buttonPanel = new JPanel();
+        titlePanel = new JPanel();
 
-        calcButton3.addActionListener(new ActionListener() {
+        calcButtonF.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
@@ -83,18 +87,38 @@ public class Main extends JFrame implements ActionListener{
                 double p = Double.parseDouble(principleTF.getText());
                 double d = Double.parseDouble(downPayTF.getText());
 
-                t = t*12;
-                r = (r/100)/12;
-                p = p-d;
+                t = t * 12;
+                r = (r / 100) / 12;
+                p = p - d;
 
-                double partial = Math.pow((1+r), t);
-                double monthlyPayment = (r*p*partial)/(partial-1);
+                double partial = Math.pow((1 + r), t);
+                double monthlyPayment = (r * p * partial) / (partial - 1);
 
                 AllPayments(monthlyPayment, r, t, p);
 
             }
         });
-       calcTotals.addActionListener(new ActionListener() {
+       calcButtonC.addActionListener(new ActionListener() {
+           @Override
+           public void actionPerformed(ActionEvent e) {
+
+               int t = Integer.parseInt(termTF.getText());
+               double r = Double.parseDouble(rateTF.getText());
+               double p = Double.parseDouble(principleTF.getText());
+               double d = Double.parseDouble(downPayTF.getText());
+
+               t = t*12;
+               r = (r/100)/12;
+               //p = p-d;
+
+               double partial = Math.pow((1+r), t);
+               double monthlyPayment = (r*p*partial)/(partial-1);
+
+               AllPayments(monthlyPayment, r, t, p);
+
+           }
+       });
+       calcTotalsF.addActionListener(new ActionListener() {
            @Override
            public void actionPerformed(ActionEvent e) {
 
@@ -114,7 +138,7 @@ public class Main extends JFrame implements ActionListener{
            }
        });
 
-       calcTotals2.addActionListener(new ActionListener() {
+       calcTotalsC.addActionListener(new ActionListener() {
            @Override
            public void actionPerformed(ActionEvent e) {
 
@@ -201,7 +225,7 @@ public class Main extends JFrame implements ActionListener{
                String newMonth = String.format("%2.2f", newMonthly);
                String paymentNum = String.format("%2.2f", (double)paymentCount);
 
-               JLabel newTotals = new JLabel("New Totals:");
+               JLabel newTotals = new JLabel("New Totals");
                JLabel newPayment = new JLabel("New Monthly Payment: " + newMonth);
                JLabel newTotalDoll = new JLabel("New Total Dollars Paid: "+tp);
                JLabel newInterest = new JLabel("New Total Interest Paid: " + inter);
@@ -213,6 +237,9 @@ public class Main extends JFrame implements ActionListener{
                imagePanel.add(newInterest);
                imagePanel.add(newTotalDoll);
 
+               buttonPanel.removeAll();
+               buttonPanel.add(backToStartButton);
+
                revalidate();
                repaint();
            }
@@ -222,41 +249,61 @@ public class Main extends JFrame implements ActionListener{
    }
     public void OpeningScreen (){
 
-        titlePanel = new JPanel();
-        titlePanel.setBackground(Color.BLUE);
-        titlePanel.setPreferredSize(new Dimension(500, 75));
+        //titlePanel = new JPanel();
+        //titlePanel.setBackground(Color.BLUE);//(Color.getHSBColor((float) .0867,(float) .137, (float) 1.0));
+        //TestTexture titlePanel = new TestTexture("mauve1.png");
+        titlePanel.setBackground(Color.getHSBColor((float) .0867,(float) .137, (float) 1.0));
+        titlePanel.setPreferredSize(new Dimension(385, 55));
+        titlePanel.setLayout(new FlowLayout(FlowLayout.CENTER));
         titlePanel.add(titleLabel);
         titlePanel.add(titleLabel);
 
+        titleLabel.setText("Amortization Schedule");
         titleLabel.setLayout(new FlowLayout(FlowLayout.CENTER));
-        titleLabel.setFont(titleLabel.getFont().deriveFont(25f));
-        titleLabel.setForeground(Color.white);//(Color.getHSBColor((float) .0867,(float) .137, (float) 1.0));
+        titleLabel.setFont(titleLabel.getFont().deriveFont(32f));
+        titleLabel.setForeground(Color.getHSBColor((float) 0.0431, (float) 0.215, (float) 0.390));
 
         principleTF.setEditable(true);
+        principleTF.setText(null);
         rateTF.setEditable(true);
+        rateTF.setText(null);
         downPayTF.setEditable(true);
-        termTF.setEditable(true);//DO SOME ERROR CHECKING!
+        downPayTF.setText(null);
+        termTF.setEditable(true);
+        termTF.setText(null);
 
-        buttonPanel.setBackground(Color.green);
-        buttonPanel.setPreferredSize(new Dimension(400, 100));
+        //TestTexture buttonPanel = new TestTexture("mauve1.png");
+        buttonPanel.setBackground(Color.WHITE);
+        buttonPanel.setPreferredSize(new Dimension(110, 35));
         buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
-        buttonPanel.add(currentMortButton);
+        futureMortButton.setText("Start");
+        futureMortButton.setPreferredSize(new Dimension(100, 35));
+
         buttonPanel.add(futureMortButton);
 
-        imagePanel.setBackground(Color.GRAY);//(Color.getHSBColor((float) 0.000,(float) 0.811, (float) 0.699));
-        imagePanel.setPreferredSize(new Dimension(400, 350));
-        imagePanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
-        //imagePanel.add(housePic);
 
-        containerPanel.setBackground(Color.BLACK);//(Color.getHSBColor((float) 0.00,(float) 0.00, (float) 0.565));//(Color.getHSBColor((float) 0.923, (float) 0.607, (float) 0.957));
+        housePic = new ImageIcon("house2.png");
+        houseLabel = new JLabel(housePic);
+        houseLabel.setIcon(housePic);
+        JPanel imageP = new JPanel();
+        imageP.setBackground(Color.getHSBColor((float) .0867, (float) .137, (float) 1.0));
+        imageP.setPreferredSize(new Dimension(620, 400));
+        imageP.setLayout(new FlowLayout(FlowLayout.CENTER));
+        imageP.add(houseLabel);
+
+        //imagePanel.add(houseLabel);
+
+        TestTexture containerPanel = new TestTexture("peach1.png");
+        //containerPanel.setBackground(Color.BLACK);//(Color.getHSBColor((float) 0.00,(float) 0.00, (float) 0.565));//(Color.getHSBColor((float) 0.923, (float) 0.607, (float) 0.957));
         containerPanel.setVisible(true);
         containerPanel.setPreferredSize(new Dimension(WIDTH, HEIGHT));
         containerPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
-        containerPanel.add(imagePanel);
-        containerPanel.add(buttonPanel);
-        containerPanel.add(titlePanel, BorderLayout.NORTH);
-        containerPanel.add(imagePanel, BorderLayout.CENTER);
-        containerPanel.add(buttonPanel, BorderLayout.SOUTH);
+        //containerPanel.add(imagePanel);
+        //containerPanel.remove(imagePanel);
+        //containerPanel.add(buttonPanel);
+        containerPanel.add(titlePanel);//, BorderLayout.NORTH);
+        containerPanel.add(imageP);//, BorderLayout.CENTER);
+        containerPanel.add(buttonPanel); //, BorderLayout.SOUTH);
 
         add(containerPanel);
         update(this.getGraphics());
@@ -266,8 +313,8 @@ public class Main extends JFrame implements ActionListener{
     public void afterFutureButton(){
 
         buttonPanel.removeAll();
-        buttonPanel.add(calcTotals);
-        buttonPanel.add(calcButton3);
+        buttonPanel.add(calcTotalsF);
+        buttonPanel.add(calcButtonF);
 
         imagePanel.setPreferredSize(new Dimension(WIDTH-200, HEIGHT-300));
         imagePanel.setLayout(new GridLayout(5, 2));
@@ -305,8 +352,8 @@ public class Main extends JFrame implements ActionListener{
     public void afterCurrentButton(){
 
         buttonPanel.removeAll();
-        buttonPanel.add(calcTotals2);
-        buttonPanel.add(calcButton3);
+        buttonPanel.add(calcTotalsC);
+        buttonPanel.add(calcButtonC);
 
         imagePanel.setPreferredSize(new Dimension(WIDTH-150, HEIGHT-150));
         imagePanel.add(termDir);
@@ -314,9 +361,19 @@ public class Main extends JFrame implements ActionListener{
         imagePanel.add(termTF);
         imagePanel.add(rateDir);
         imagePanel.add(rateTF);
-        princDir.setText("Remaining Principal: ");
+        princDir.setText("Principal Remaining: ");
         imagePanel.add(princDir);
         imagePanel.add(principleTF);
+
+        definitionsPanel.setBackground(Color.darkGray);
+        definitionsPanel.setPreferredSize(new Dimension(125, 350));
+        definitionsPanel.add(definitionsLabel);
+        definitionsPanel.add(principleLabel);
+        definitionsPanel.add(rateLabel);
+        definitionsPanel.add(downPayLabel);
+        definitionsPanel.add(termLabel);
+        definitionsPanel.setPreferredSize(new Dimension(100, 200));
+        definitionsPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
 
         titlePanel = new JPanel();
         titlePanel.setBackground(Color.BLUE);
@@ -339,12 +396,11 @@ public class Main extends JFrame implements ActionListener{
         containerPanel.add(imagePanel, BorderLayout.EAST);
         containerPanel.add(buttonPanel, BorderLayout.SOUTH);
 
-
+        add(containerPanel);
         revalidate();
         repaint();
 
     }
-
     public void EarlyPayoff(){
         containerPanel.removeAll();
 
@@ -421,7 +477,8 @@ public class Main extends JFrame implements ActionListener{
     }
     public void PrintTotals(double Monthly, double rate, int t, double p){
         containerPanel.remove(imagePanel);
-        containerPanel.remove(calcButton3);
+        containerPanel.remove(calcButtonF);
+        containerPanel.remove(calcButtonC);
         buttonPanel.removeAll();
         containerPanel.remove(definitionsPanel);
 
@@ -451,6 +508,9 @@ public class Main extends JFrame implements ActionListener{
         gridPanel.add(intL);
         gridPanel.add(inT);
 
+        buttonPanel.add(earlyPayoffButton);
+        buttonPanel.add(backToStartButton);
+
         containerPanel.add(gridPanel);
 
         revalidate();
@@ -459,7 +519,9 @@ public class Main extends JFrame implements ActionListener{
     public void AllPayments(double Monthly, double rate, int t, double p){
 
         containerPanel.remove(imagePanel);
-        containerPanel.remove(calcButton3);
+        containerPanel.remove(calcButtonF);
+        containerPanel.remove(calcButtonC);
+        containerPanel.remove(calcButtonC);
         containerPanel.remove(definitionsPanel);
 
         earlyPayoffButton.setText("Run Numbers for Early Payoff");
@@ -496,7 +558,11 @@ public class Main extends JFrame implements ActionListener{
             double re = tempP - num;
             String n = String.format("%2.2f", re);
             double remain = Double.parseDouble(n);
-            remainingBalance[i] = remain;
+            if(remain<0){
+                remainingBalance[i]=0;
+            }else{
+                remainingBalance[i] = remain;
+            }
 
             double in = Monthly - num;
             String inter = String.format("%2.2f", in);
@@ -516,7 +582,7 @@ public class Main extends JFrame implements ActionListener{
 
         gridPanel = new JPanel();
         containerPanel.setPreferredSize(new Dimension(800, 800));
-        gridPanel.setPreferredSize(new Dimension(WIDTH+200, HEIGHT+4000));
+        gridPanel.setPreferredSize(new Dimension(WIDTH+50, HEIGHT*10));
         gridPanel.setLayout(new GridLayout(t+1, 5));
 
         gridPanel.add(numL);
@@ -556,9 +622,12 @@ public class Main extends JFrame implements ActionListener{
 
         scrollPanel = new JPanel();
         scrollPanel.setLayout(new BorderLayout());
+        scrollPanel.setPreferredSize(new Dimension(500, t+2));
         //getContentPane().add(scrollPanel);
 
+        Dimension d = gridPanel.getPreferredSize();
         JScrollPane scrollPane = new JScrollPane();
+        scrollPane.setPreferredSize(new Dimension(d.width, d.height));
         scrollPane.getViewport().add(gridPanel);
         scrollPanel.add(scrollPane, BorderLayout.CENTER);
 
@@ -567,4 +636,35 @@ public class Main extends JFrame implements ActionListener{
         revalidate();
         repaint();
     }
+    public class TestTexture extends JPanel
+    {
+        java.io.File fileTexture;
+        public TestTexture(String x){
+
+            fileTexture  = new  java.io.File(x);
+        }
+
+        public void paintComponent(Graphics g)
+        {
+            super.paintComponent(g);
+            Graphics2D g2 = (Graphics2D) g;
+            if (g2==null)
+            {
+                System.out.println("error");
+                return;
+            }
+            try
+            {
+                BufferedImage mImage = ImageIO.read(fileTexture);
+                java.awt.geom.Rectangle2D tr = new   java.awt.geom.Rectangle2D.Double(0, 0, mImage.getWidth(), mImage.getHeight());
+                TexturePaint tp = new TexturePaint(mImage, tr);
+                g2.setPaint(tp);
+                java.awt.geom.Rectangle2D  r =  (java.awt.geom.Rectangle2D)this.getBounds();
+                g2.fill(r);
+            }
+            catch (java.io.IOException ex) {}
+
+        }
+    }
 }
+
