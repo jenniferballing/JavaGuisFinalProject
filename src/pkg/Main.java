@@ -14,13 +14,13 @@ import java.awt.image.BufferedImage;
 public class Main extends JFrame implements ActionListener{
     private JPanel buttonPanel, gridP, imageP, containerPanel, imagePanel, definitionsPanel, titlePanel, gridPanel, scrollPanel;
     private JButton currentMortButton, futureMortButton, calcButtonF, calcButtonC, calcTotalsC, calcTotalsF, earlyPayoffButton, backToStartButton, calcButton;
-    private JLabel titleLabel, houseLabel, definitionsLabel, principleLabel, rateLabel, termLabel, downPayLabel, princDir, rateDir, termDir, downPayDir;
+    private JLabel titleLabel, houseLabel, disclaimerLabel, definitionsLabel, principleLabel, rateLabel, termLabel, downPayLabel, princDir, rateDir, termDir, downPayDir;
     private ImageIcon housePic;
     private static final int WIDTH = 700, HEIGHT = 600;
     int [] paymentNum;
     double [] paymentAmount, principalPayed, interestPayed, remainingBalance ;
     private JTextField monTF;
-    private TestTexture containerPanelT, imagePanelT;
+    private TestTexture containerPanelT, titlePT, gridPT;
     final JTextField principleTF = new JTextField();
     final JTextField rateTF = new JTextField();
     final JTextField downPayTF = new JTextField();
@@ -63,6 +63,7 @@ public class Main extends JFrame implements ActionListener{
         termDir = new JLabel("Term: ");
         rateDir = new JLabel("Rate: ");
         downPayDir = new JLabel("Down Payment: ");
+        disclaimerLabel = new JLabel("* The information provided here is pertinent only to fixed rate homes loans. Interests-only, ARM, and the doubly irresponsible interest only - ARM will not be considered here.");
 
         definitionsPanel = new JPanel();
         imagePanel = new JPanel();
@@ -118,13 +119,11 @@ public class Main extends JFrame implements ActionListener{
                EarlyPayoff();
            }
        });
-       backToStartButton.addActionListener(new ActionListener() {
+       backToStartButton.addActionListener(new ActionListener () {
            @Override
            public void actionPerformed(ActionEvent e) {
-               imagePanel.removeAll();
-               buttonPanel.removeAll();
-               containerPanel.removeAll();
-               OpeningScreen();
+               System.exit(0);
+
            }
        });
        calcButton.addActionListener(new ActionListener() {
@@ -207,11 +206,8 @@ public class Main extends JFrame implements ActionListener{
    }
     public void OpeningScreen (){
 
-        //titlePanel = new JPanel();
-        //titlePanel.setBackground(Color.BLUE);//(Color.getHSBColor((float) .0867,(float) .137, (float) 1.0));
-        //TestTexture titlePanel = new TestTexture("mauve1.png");
-        titlePanel.setBackground(Color.getHSBColor((float) .0867,(float) .137, (float) 1.0));
-        titlePanel.setPreferredSize(new Dimension(385, 55));
+        titlePanel.setBackground(Color.BLACK);
+        titlePanel.setPreferredSize(new Dimension(380, 45));
         titlePanel.setLayout(new FlowLayout(FlowLayout.CENTER));
         titlePanel.add(titleLabel);
         titlePanel.add(titleLabel);
@@ -219,7 +215,7 @@ public class Main extends JFrame implements ActionListener{
         titleLabel.setText("Amortization Schedule");
         titleLabel.setLayout(new FlowLayout(FlowLayout.CENTER));
         titleLabel.setFont(titleLabel.getFont().deriveFont(32f));
-        titleLabel.setForeground(Color.getHSBColor((float) 0.0431, (float) 0.215, (float) 0.390));
+        titleLabel.setForeground(Color.getHSBColor((float) .0867,(float) .137, (float) 1.0));
 
         principleTF.setEditable(true);
         principleTF.setText(null);
@@ -230,9 +226,9 @@ public class Main extends JFrame implements ActionListener{
         termTF.setEditable(true);
         termTF.setText(null);
 
-        //TestTexture buttonPanel = new TestTexture("mauve1.png");
-        buttonPanel.setBackground(Color.WHITE);
-        buttonPanel.setPreferredSize(new Dimension(110, 35));
+
+        buttonPanel.setBackground(Color.black);
+        buttonPanel.setPreferredSize(new Dimension(110, 45));
         buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
         futureMortButton.setText("Start");
         futureMortButton.setPreferredSize(new Dimension(100, 35));
@@ -244,20 +240,18 @@ public class Main extends JFrame implements ActionListener{
         houseLabel = new JLabel(housePic);
         houseLabel.setIcon(housePic);
         imageP = new JPanel();
-        imageP.setBackground(Color.getHSBColor((float) .0867, (float) .137, (float) 1.0));
-        imageP.setPreferredSize(new Dimension(620, 400));
+        imageP.setBackground(Color.BLACK);
+        imageP.setPreferredSize(new Dimension(615, 410));
         imageP.setLayout(new FlowLayout(FlowLayout.CENTER));
         imageP.add(houseLabel);
 
-        //imagePanel.add(houseLabel);
-
-        containerPanelT = new TestTexture("peach1.png");
+        containerPanelT = new TestTexture("brownBackG.png");
         containerPanelT.setVisible(true);
         containerPanelT.setPreferredSize(new Dimension(WIDTH, HEIGHT));
-        containerPanelT.setLayout(new FlowLayout(FlowLayout.CENTER));
-        containerPanelT.add(titlePanel);
-        containerPanelT.add(imageP);
-        containerPanelT.add(buttonPanel);
+        containerPanelT.setLayout(new FlowLayout());
+        containerPanelT.add(titlePanel, BorderLayout.NORTH);
+        containerPanelT.add(imageP, BorderLayout.CENTER);
+        containerPanelT.add(buttonPanel, BorderLayout.SOUTH);
 
         add(containerPanelT);
         update(this.getGraphics());
@@ -266,47 +260,115 @@ public class Main extends JFrame implements ActionListener{
     }
     public void afterFutureButton(){
 
-        containerPanelT.remove(imageP);
+        containerPanelT.removeAll();//(imageP);
+        titlePanel.setBackground(Color.getHSBColor((float) .0867,(float) .137, (float) 1.0));//(Color.getHSBColor((float) 0.0906,(float) 0.235, (float) 0.912));
+//        (Color.getHSBColor((float) .0867, (float) .137, (float) 1.0));
+        titlePanel.setPreferredSize(new Dimension(350, 55));
+        titleLabel.setForeground(Color.BLACK);
         buttonPanel.removeAll();
-        buttonPanel.setBackground(Color.getHSBColor((float) .0867,(float) .137, (float) 1.0));
+        buttonPanel.setBackground(Color.getHSBColor((float) .0867, (float) .137, (float) 1.0));
         buttonPanel.setPreferredSize(new Dimension(100, 50));
+        buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
         buttonPanel.add(calcTotalsF);
         buttonPanel.add(calcButtonF);
+        buttonPanel.add(disclaimerLabel);//, BorderLayout.SOUTH);
+
+        gridPT = new TestTexture("brownBackG.png");
+        gridPT.setVisible(true);
+        gridPT.setPreferredSize(new Dimension(300, 300));
+        gridPT.setLayout(new GridLayout(10, 2));//FlowLayout(FlowLayout.CENTER));
+        //gridP.setBackground(Color.getHSBColor((float) 0.0906,(float) 0.235, (float) 0.912));
+//        (Color.getHSBColor((float) 0.931,(float) 0.057, (float) 0.970));//(Color.getHSBColor((float) 0.0431,(float) 0.215, (float) 0.390));
 
         gridP = new JPanel();
-        gridP.setVisible(true);
-        gridP.setPreferredSize(new Dimension(400, 400));
-        gridP.setLayout(new GridLayout(5, 2));
-        gridP.setBackground(Color.getHSBColor((float) 0.0431,(float) 0.215, (float) 0.390));
+        gridPT.setBackground(Color.BLACK);
+        //gridP.add(gridPT);
+        JLabel space = new JLabel(" ");
+        JLabel space1 = new JLabel(" ");
+        JLabel space2 = new JLabel(" ");
+        JLabel space3 = new JLabel(" ");
+        JLabel space4 = new JLabel(" ");
+        JLabel space5 = new JLabel(" ");
+        JLabel space6 = new JLabel(" ");
+        JLabel space7 = new JLabel(" ");
+        JLabel space8 = new JLabel(" ");
+        JLabel space9 = new JLabel(" ");
+
+
 
         termTF.setPreferredSize(new Dimension(80, 25));
         rateTF.setPreferredSize(new Dimension(80, 25));
         principleTF.setPreferredSize(new Dimension(80, 25));
         downPayTF.setPreferredSize(new Dimension(80, 25));
 
-        gridP.add(termDir);
-        gridP.add(termTF);
-        gridP.add(rateDir);
-        gridP.add(rateTF);
-        gridP.add(downPayDir);
-        gridP.add(downPayTF);
-        gridP.add(princDir);
-        gridP.add(principleTF);
+        termDir.setFont(termDir.getFont().deriveFont(15f));
+        termDir.setForeground(Color.WHITE);
+        rateDir.setFont(rateDir.getFont().deriveFont(15f));
+        rateDir.setForeground(Color.WHITE);
+        princDir.setFont(princDir.getFont().deriveFont(15f));
+        princDir.setForeground(Color.WHITE);
+        downPayDir.setFont(downPayDir.getFont().deriveFont(15f));
+        downPayDir.setForeground(Color.WHITE);
 
-        definitionsPanel.setBackground(Color.WHITE);
-        definitionsPanel.setPreferredSize(new Dimension(250, 350));
+        gridPT.add(space);
+        gridPT.add(space1);
+        gridPT.add(termDir);
+        gridPT.add(termTF);
+        gridPT.add(space2);
+        gridPT.add(space3);
+        gridPT.add(rateDir);
+        gridPT.add(rateTF);
+        gridPT.add(space4);
+        gridPT.add(space5);
+        gridPT.add(downPayDir);
+        gridPT.add(downPayTF);
+        gridPT.add(space6);
+        gridPT.add(space7);
+        gridPT.add(princDir);
+        gridPT.add(principleTF);
+        gridPT.add(space8);
+        gridPT.add(space9);
+
+        termLabel.setText("TERM- The period of time which covers the life of ");
+        JLabel termLabel1 = new JLabel("the loan from inception to pay-off.");
+
+        principleLabel.setText("PRINCIPAL – The base amount borrowed from the ");
+        JLabel principleLabel1 = new JLabel("lender, excluding interest.");
+        //principleLabel.setPreferredSize(new Dimension(350, 50));
+        rateLabel.setText("INTEREST RATE – The rate of interest a lender ");
+        JLabel rateLabel1 = new JLabel("receives for allowing the borrower to use money.");
+        //rateLabel.setPreferredSize(new Dimension(350, 50));
+
+        downPayLabel.setText("DOWN PAYMENT – The percentage of your home's ");
+        JLabel dp1 = new JLabel("purchase price that is paid at closing. ");
+        //downPayLabel.setPreferredSize(new Dimension(350, 50));
+        definitionsPanel.setBackground(Color.getHSBColor((float) 0.575, (float) 0.452, (float) 1.000));
+
+//        ackground(Color.getHSBColor((float) 0.0621,(float) 0.200, (float) 0.940));
+        definitionsPanel.setPreferredSize(new Dimension(300, 100));
+        definitionsPanel.setLayout(new GridLayout(12, 1));//FlowLayout.LEFT));//GridLayout(5,1));
+        definitionsLabel.setText("DEFINITIONS");
+        definitionsLabel.setFont(definitionsLabel.getFont().deriveFont(15f));
         definitionsPanel.add(definitionsLabel);
         definitionsPanel.add(principleLabel);
+        definitionsPanel.add(principleLabel1);
         definitionsPanel.add(rateLabel);
+        definitionsPanel.add(rateLabel1);
         definitionsPanel.add(downPayLabel);
+        definitionsPanel.add(dp1);
         definitionsPanel.add(termLabel);
-        definitionsPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
+        definitionsPanel.add(termLabel1);
+        //definitionsPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
+
+        disclaimerLabel.setFont(disclaimerLabel.getFont().deriveFont(10f));
+        titleLabel.setLayout(new FlowLayout(FlowLayout.CENTER));
 
         containerPanelT.setLayout(new BorderLayout());
         containerPanelT.add(titlePanel, BorderLayout.NORTH);
         containerPanelT.add(definitionsPanel, BorderLayout.WEST);
-        containerPanelT.add(gridP, BorderLayout.EAST);
+        containerPanelT.add(gridPT,BorderLayout.EAST);
         containerPanelT.add(buttonPanel, BorderLayout.SOUTH);
+        //containerPanelT.add(disclaimerLabel, BorderLayout.SOUTH);
 
         add(containerPanelT);
         update(this.getGraphics());
@@ -318,7 +380,12 @@ public class Main extends JFrame implements ActionListener{
 
         titleLabel.setText("Early Payoff Options");
         titlePanel.removeAll();
-        titlePanel.add(titleLabel);
+
+        titlePT = new TestTexture("lightMarble.png");
+        //titlePanel.setBackground(Color.getHSBColor((float) 0.0431, (float) 0.325, (float) 0.720));
+        //titlePanel.setPreferredSize(new Dimension(385, 55));
+        //titlePanel.add(titleLabel);
+        titlePT.add(titleLabel);
 
         JLabel currentTotals = new JLabel("Current Totals");
         double p = Double.parseDouble(principleTF.getText());
@@ -355,8 +422,10 @@ public class Main extends JFrame implements ActionListener{
         buttonPanel.removeAll();
         buttonPanel.add(calcButton);
 
+        //imagePanelT = new TestTexture("lightMarble.png");
         imagePanel.removeAll();
-        imagePanel.setBackground(Color.getHSBColor((float) .0867,(float) .137, (float) 1.0));;
+        imagePanel.setBackground(Color.getHSBColor((float) .0867,(float) .137, (float) 1.0));//(Color.getHSBColor((float) 0.575, (float) 0.452, (float) 1.000));
+
         imagePanel.setLayout(new GridLayout(12, 1));
         imagePanel.add(currentTotals);
         imagePanel.add(nuMon);
@@ -366,7 +435,10 @@ public class Main extends JFrame implements ActionListener{
         imagePanel.add(monn);
         imagePanel.add(monTF);
 
-        containerPanelT.add(titlePanel, BorderLayout.NORTH);
+
+        buttonPanel.setBackground(Color.getHSBColor((float) 0.0431, (float) 0.325, (float) 0.720));
+
+        containerPanelT.add(titlePT, BorderLayout.NORTH);
         containerPanelT.add(imagePanel, BorderLayout.CENTER);
         containerPanelT.add(buttonPanel, BorderLayout.SOUTH);
 
@@ -388,35 +460,43 @@ public class Main extends JFrame implements ActionListener{
         containerPanelT.remove(calcButtonF);
         containerPanelT.remove(calcButtonC);
         containerPanelT.remove(definitionsPanel);
+        containerPanelT.remove(gridPT);
         buttonPanel.removeAll();
         containerPanelT.remove(definitionsPanel);
 
         String m = String.format("%.2f", (double)t);
-        JLabel numL = new JLabel("Total Number of Payments: ");
-        JLabel num = new JLabel(m);
+        JLabel numL = new JLabel("Total Number of Payments: $" + m);
+        numL.setFont(numL.getFont().deriveFont(20f));
+        numL.setForeground(Color.DARK_GRAY);
 
         double dollarsPaid = Monthly*t;
         String d = String.format("%.2f", dollarsPaid);
-        JLabel payL = new JLabel("Total Dollars Paid: ");
-        JLabel doll = new JLabel(d);
+        d = "Total Dollars Paid: $" + d;
+        //JLabel doll = new JLabel(d);
+        JLabel payL = new JLabel(d);
+        //JLabel doll = new JLabel(d);
+        payL.setFont(payL.getFont().deriveFont(20f));
+        payL.setForeground(Color.DARK_GRAY);
 
         double storeInterest = dollarsPaid - p;
-        JLabel intL = new JLabel("Total Interest Paid: ");
         String i = String.format("%.2f", storeInterest);
-        JLabel inT = new JLabel(i);
+        JLabel intL = new JLabel("Total Interest Paid: $" + i);
+        intL.setFont(intL.getFont().deriveFont(20f));
+        intL.setForeground(Color.DARK_GRAY);
 
         gridPanel = new JPanel();
-        gridPanel.setPreferredSize(new Dimension(400, 400));
-        gridPanel.setBackground(Color.white);
+        gridPanel.setPreferredSize(new Dimension(400, 100));
+        gridPanel.setBackground(Color.getHSBColor((float) .0867,(float) .137, (float) 1.0));
+//        Color.getHSBColor((float) 0.575, (float) 0.452, (float) 1.000));
         gridPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
 
         gridPanel.add(numL);
-        gridPanel.add(num);
-        gridPanel.add(payL);
-        gridPanel.add(doll);
-        gridPanel.add(intL);
-        gridPanel.add(inT);
 
+        gridPanel.add(payL);
+
+        gridPanel.add(intL);
+
+        backToStartButton.setText("Exit");
         buttonPanel.add(earlyPayoffButton);
         buttonPanel.add(backToStartButton);
 
@@ -431,11 +511,12 @@ public class Main extends JFrame implements ActionListener{
         containerPanelT.remove(calcButtonF);
         containerPanelT.remove(calcButtonC);
         containerPanelT.remove(calcButtonC);
+        containerPanelT.remove(gridPT);
         containerPanelT.remove(definitionsPanel);
         containerPanelT.remove(gridP);
 
         earlyPayoffButton.setText("Run Numbers for Early Payoff");
-        backToStartButton.setText("Back to Start");
+        backToStartButton.setText("Exit");
         buttonPanel.removeAll();
         buttonPanel.add(earlyPayoffButton);
         buttonPanel.add(backToStartButton);
